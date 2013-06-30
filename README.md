@@ -1,6 +1,27 @@
 # [sublime-markdown-extended](https://github.com/jonschlinkert/sublime-markdown-extended)
 
-> Extends Soda's Monokai and the default markdown styles with additional syntax highlighting for [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html) and [GFM fenced code blocks](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting), with language-specific syntax highlighting
+> Extends Soda's Monokai and the default markdown styles with additional syntax highlighting for 
+> [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html), GitHub Flavored Markdown 
+> (GFM) and [GFM "fenced" code blocks](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting), 
+> with language-specific syntax highlighting
+
+
+## Installation
+
+The easiest way to install this plugin is to go to `Preferences -> Browse Packages`, then:
+
+``` bash
+git clone https://github.com/jonschlinkert/sublime-markdown-extended.git "sublime-markdown-extended"
+```
+
+Then inside Sublime Text, go to `Preferences -> Color Scheme -> Markdown Extended` and select `Monokai Extended`.
+
+**After installing this package**, open a markdown file and switch the language to `Markdown Extended`, using one
+of the following methods:
+
+* Select fFrom the list of supported languages in your status bar at the bottom right corner of your editor. 
+* `ctrl + shift + p` and find "Markdown Extended"
+
 
 ## Examples
 
@@ -27,7 +48,7 @@ The following languages are highlighted inside fenced code blocks:
 * `coffee`
 * `CSS`
 * `diff`
-* `handlebars`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
+* `Handlebars`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
 * `HTML`/`HTML5`
 * `java`
 * `js`/`javascript`
@@ -54,6 +75,11 @@ The following languages are highlighted inside fenced code blocks:
 ![image](https://f.cloud.github.com/assets/383994/726871/893061c8-e13d-11e2-9bf5-189d850ccc66.png)
 
 
+## Credit
+
+Although substantial changes have been made, thank you [@aziz](https://github.com/aziz) and other contributors to [Knockdown](https://github.com/aziz/knockdown), from which most of the code for the syntax highlighting inside fenced code blocks was taken. 
+
+
 ## Author
 
 **Jon Schlinkert**
@@ -66,3 +92,13 @@ The following languages are highlighted inside fenced code blocks:
 Copyright 2013 Jon Schlinkert
 
 [MIT License](LICENSE-MIT)
+
+
+### Features:
+* Support for fenced code blocks
+* Syntax highlighting support for most popular languages (see below for the list of supported languages)
+* Syntax highlighting for URLs in text which is auto-linked by GFM
+* Proper syntax highlighting for bullets and numbers in ordered/unordered lists
+* Proper syntax highlighting for bold and italics by ignoring multiple underscores in words
+
+
