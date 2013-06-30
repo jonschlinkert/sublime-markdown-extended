@@ -2,8 +2,7 @@
 
 > Extends Soda's Monokai and the default markdown styles with additional syntax highlighting for 
 > [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html), GitHub Flavored Markdown 
-> (GFM) and [GFM "fenced" code blocks](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting), 
-> with language-specific syntax highlighting
+> (GFM) and language-specific syntax highlighting inside [GFM "fenced" code blocks](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting)
 
 
 ## Installation
