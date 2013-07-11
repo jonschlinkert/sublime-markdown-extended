@@ -1,13 +1,13 @@
 # [sublime-markdown-extended](https://github.com/jonschlinkert/sublime-markdown-extended)
 
-> Extends Soda's Monokai and the default markdown styles with additional syntax highlighting for 
-> [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html), GitHub Flavored Markdown 
+> Extends Soda's Monokai and the default markdown styles with additional syntax highlighting for
+> [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html), GitHub Flavored Markdown
 > (GFM) and language-specific syntax highlighting inside [GFM "fenced" code blocks](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting)
 
 
 ## Installation
 
-The easiest way to install this plugin is to go to `Preferences -> Browse Packages`, then:
+The easiest way to install this plugin is to go to `Preferences -> Browse Packages`, and then:
 
 ``` bash
 git clone https://github.com/jonschlinkert/sublime-markdown-extended.git "sublime-markdown-extended"
@@ -18,8 +18,23 @@ Then inside Sublime Text, go to `Preferences -> Color Scheme -> Markdown Extende
 **After installing this package**, open a markdown file and switch the language to `Markdown Extended`, using one
 of the following methods:
 
-* Select fFrom the list of supported languages in your status bar at the bottom right corner of your editor. 
+* Select fFrom the list of supported languages in your status bar at the bottom right corner of your editor.
 * `ctrl + shift + p` and find "Markdown Extended"
+
+## Improvements
+
+### Markdown language
+
+Additional syntax highlighting for
+
+* Regex
+* LESS
+* GitHub Flavored Markdown (GFM)
+* Language-specific syntax highlighting inside [GFM "fenced" code blocks](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting)
+
+### Monokai theme
+
+* [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html) patterns
 
 
 ## Examples
@@ -36,34 +51,38 @@ of the following methods:
 ![image](https://f.cloud.github.com/assets/383994/726865/aa2cdb6e-e13c-11e2-89b0-c06923447ec9.png)
 
 
-### GFM Fenced Code Blocks 
+### GFM Fenced Code Blocks
 
 #### Supported languages
 
 The following languages are highlighted inside fenced code blocks:
 
+_Note that in order for a language to be highlighted properly, you must have the language installed._
+
 * `c++`
 * `c`
 * `coffee`
-* `CSS`
+* `css`
 * `diff`
-* `Handlebars`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
-* `HTML`/`HTML5`
+* `hbs|handlebars`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
+* `html|html5`
 * `java`
-* `js`/`javascript`
 * `json`
-* `LESS`
+* `js|javascript`
+* `less`
+* `md|markdown`
 * `objective-c`
 * `perl`
 * `php`
 * `python`
 * `ruby`
-* `sass`/`scss`
+* `sass|scss`
 * `scala`
 * `shell`
 * `sql`
 * `xml`
 * `yaml`
+
 
 #### Turn this:
 
@@ -76,7 +95,7 @@ The following languages are highlighted inside fenced code blocks:
 
 ## Credit
 
-Although substantial changes have been made, thank you [@aziz](https://github.com/aziz) and other contributors to [Knockdown](https://github.com/aziz/knockdown), from which most of the code for the syntax highlighting inside fenced code blocks was taken. 
+Although substantial changes have been made, thank you [@aziz](https://github.com/aziz) and other contributors to [Knockdown](https://github.com/aziz/knockdown), from which most of the code for the syntax highlighting inside fenced code blocks was taken.
 
 
 ## Author
