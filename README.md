@@ -35,16 +35,14 @@ of the following methods:
 
 
 ## Markdown Enhancements
-
 The following examples use the [Monokai Extended](https://github.com/jonschlinkert/sublime-monokai-extended) theme.
 
-### Turn this:
 
+### YAML Front Matter
+#### Turn this:
 ![image](https://f.cloud.github.com/assets/383994/726861/2f03fb2a-e13c-11e2-9df0-cb9514b301fe.png)
 
-
-### Into this:
-
+#### Into this:
 ![image](https://f.cloud.github.com/assets/383994/726865/aa2cdb6e-e13c-11e2-89b0-c06923447ec9.png)
 
 
@@ -82,11 +80,9 @@ _Note that in order for a language to be highlighted properly, you must have the
 
 
 ### Turn this:
-
 ![image](https://f.cloud.github.com/assets/383994/726869/5f066f14-e13d-11e2-9cdd-118f56a39da5.png)
 
 ### Into this:
-
 ![image](https://f.cloud.github.com/assets/383994/726871/893061c8-e13d-11e2-9bf5-189d850ccc66.png)
 
 
