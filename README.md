@@ -24,6 +24,35 @@ of the following methods:
 * `ctrl + shift + p` and search for "Markdown Extended"
 
 
+## Usage
+
+A few things to keep in mind:
+
+### Significant whitespace
+
+#### Before
+
+You will need to keep a space above and below fenced code blocks for predictable results with syntax highlighting. For example, this is what it looks like when there is no space before a fenced code block:
+
+![image](https://f.cloud.github.com/assets/383994/782115/470ca012-ea35-11e2-940c-5919386f26bf.png)
+
+This is what it looks like with proper spacing:
+
+![image](https://f.cloud.github.com/assets/383994/782119/5b27105a-ea35-11e2-9ea8-7a195f381d7c.png)
+
+#### After
+
+Also add a new line after code blocks, but make sure that there is no trailing whitespace next to the bottom fence.
+
+**With a trailing whitespace**
+
+![image](https://f.cloud.github.com/assets/383994/782152/0217cb20-ea36-11e2-8cfd-2ea47136fb0c.png)
+
+**Without a trailing whitespace**
+
+![image](https://f.cloud.github.com/assets/383994/782145/f534f1da-ea35-11e2-8689-d606494f7830.png)
+
+
 ## Features:
 
 * Support for [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html)
