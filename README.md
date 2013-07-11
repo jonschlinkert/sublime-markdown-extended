@@ -54,27 +54,18 @@ The following languages are highlighted inside fenced code blocks:
 
 _Note that in order for a language to be highlighted properly, you must have the language installed._
 
-* `c++`
-* `c`
+
 * `coffee`
 * `css`
 * `diff`
 * `hbs|handlebars`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
 * `html|html5`
-* `java`
 * `json`
 * `js|javascript`
 * `less`
 * `md|markdown`
-* `objective-c`
-* `perl`
-* `php`
-* `python`
 * `ruby`
 * `sass|scss`
-* `scala`
-* `shell`
-* `sql`
 * `xml`
 * `yaml`
 
