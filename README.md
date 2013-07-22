@@ -6,9 +6,9 @@
 
 Although substantial changes have been made, thank you [@aziz](https://github.com/aziz) and other contributors to [Knockdown](https://github.com/aziz/knockdown), for the code for the fenced code blocks.
 
-Companion to [sublime-monokai-extended](https://github.com/jonschlinkert/sublime-monokai-extended).
+Get [Monokai Extended](https://github.com/jonschlinkert/sublime-monokai-extended) for better highlighting.
 
-#### [Jump to Examples ↓](#usage)
+#### [Jump to Examples ↓](#examples)
 
 
 ## Getting Started
@@ -39,6 +39,7 @@ of the following methods:
 **NOTE**: If anyone knows how to _force_ Sublime Text 3 to always use this as the default over the built-in highlighting for markdown, please let me know so I can do it (and add it to the readme :-)
 
 
+
 ## Features:
 * Support for [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html)
 * Support for [GFM "fenced" code blocks](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting)
@@ -52,18 +53,21 @@ of the following methods:
 The following examples use the [Monokai Extended](https://github.com/jonschlinkert/sublime-monokai-extended) theme.
 
 
-## Usage
+## Whitespace
 
 ### Significant whitespace
+**Whitespace is significant** _only directly before and directly after fenced code blocks_! Following these instructions will ensure that highlighting works properly and consistently.
 
-**Whitespace is significant** _only directly before and directly after fenced code blocks_!
+This is very simple:
 
-* Add a newline before and after clode blocks to ensure that highlighting consistently works properly.
-* Don't leave any spaces after the last code block.
+* **Add a newline** before and after clode blocks
+* **No trailing spaces** after the last code block
 
+If you don't, it won't break your code but it won't always look awesome.
 
+### Comparisons with and without proper whitespace
 
-#### Before
+#### Whitespace before the block
 You will need to keep a space above and below fenced code blocks for predictable results with syntax highlighting. For example, this is what it looks like when there is no space before a fenced code block:
 
 ![image](https://f.cloud.github.com/assets/383994/782115/470ca012-ea35-11e2-940c-5919386f26bf.png)
@@ -72,7 +76,7 @@ This is what it looks like with proper spacing:
 
 ![image](https://f.cloud.github.com/assets/383994/782119/5b27105a-ea35-11e2-9ea8-7a195f381d7c.png)
 
-#### After
+#### Whitespace after the block
 Also add a new line after code blocks, but make sure that there is no trailing whitespace next to the bottom fence.
 
 **With a trailing whitespace**
@@ -85,13 +89,8 @@ Also add a new line after code blocks, but make sure that there is no trailing w
 
 
 
-### YAML Front Matter
-#### Turn this:
-![image](https://f.cloud.github.com/assets/383994/726861/2f03fb2a-e13c-11e2-9df0-cb9514b301fe.png)
 
-#### Into this:
-![image](https://f.cloud.github.com/assets/383994/726865/aa2cdb6e-e13c-11e2-89b0-c06923447ec9.png)
-
+## Examples
 
 ## GFM Fenced Code Blocks
 
@@ -100,7 +99,6 @@ Also add a new line after code blocks, but make sure that there is no trailing w
 The following languages are highlighted inside fenced code blocks:
 
 _Note that in order for a language to be highlighted properly, you must have the language installed in Sublime Text._
-
 
 * `coffee`
 * `css`
@@ -111,6 +109,7 @@ _Note that in order for a language to be highlighted properly, you must have the
 * `js|javascript`
 * `less`
 * `md|markdown`
+* `perl`
 * `ruby`
 * `sass|scss`
 * `xml`
@@ -122,6 +121,17 @@ _Note that in order for a language to be highlighted properly, you must have the
 
 ### Into this:
 ![image](https://f.cloud.github.com/assets/383994/726871/893061c8-e13d-11e2-9bf5-189d850ccc66.png)
+
+
+### YAML Front Matter
+
+#### Turn this:
+![image](https://f.cloud.github.com/assets/383994/726861/2f03fb2a-e13c-11e2-9df0-cb9514b301fe.png)
+
+#### Into this:
+![image](https://f.cloud.github.com/assets/383994/726865/aa2cdb6e-e13c-11e2-89b0-c06923447ec9.png)
+
+
 
 
 ## Author
