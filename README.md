@@ -53,9 +53,10 @@ The following examples use the [Monokai Extended](https://github.com/jonschlinke
 
 
 ## Usage
-A few things to keep in mind:
 
 ### Significant whitespace
+
+**Whitespace is significant** _directly around fenced code blocks_!
 
 #### Before
 You will need to keep a space above and below fenced code blocks for predictable results with syntax highlighting. For example, this is what it looks like when there is no space before a fenced code block:
