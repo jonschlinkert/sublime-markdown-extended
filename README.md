@@ -56,7 +56,12 @@ The following examples use the [Monokai Extended](https://github.com/jonschlinke
 
 ### Significant whitespace
 
-**Whitespace is significant** _directly around fenced code blocks_!
+**Whitespace is significant** _only directly before and directly after fenced code blocks_!
+
+* Add a newline before and after clode blocks to ensure that highlighting consistently works properly.
+* Don't leave any spaces after the last code block.
+
+
 
 #### Before
 You will need to keep a space above and below fenced code blocks for predictable results with syntax highlighting. For example, this is what it looks like when there is no space before a fenced code block:
