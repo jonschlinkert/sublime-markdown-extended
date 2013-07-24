@@ -112,6 +112,7 @@ _Note that in order for a language to be highlighted properly, you must have the
 * `perl`
 * `ruby`
 * `sass|scss`
+* `shell|bash`
 * `xml`
 * `yaml`
 
@@ -131,6 +132,14 @@ _Note that in order for a language to be highlighted properly, you must have the
 #### Into this:
 ![image](https://f.cloud.github.com/assets/383994/726865/aa2cdb6e-e13c-11e2-89b0-c06923447ec9.png)
 
+
+### Shell
+
+#### Turn this:
+![image](https://f.cloud.github.com/assets/383994/851162/38fc84ae-f496-11e2-9014-81b91da16232.png)
+
+#### Into this
+![image](https://f.cloud.github.com/assets/383994/851165/468b3282-f496-11e2-8a2d-ebf6f9c925f6.png)
 
 
 

@@ -114,6 +114,24 @@
             ]
         }, 
         {
+            "begin": "(```)\\s*(shell|bash)\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.shell"
+                }
+            ]
+        }, 
+        {
             "begin": "(```)\\s*(css)\\s*$", 
             "captures": {
                 "1": {
@@ -218,6 +236,60 @@
             "patterns": [
                 {
                     "include": "source.js"
+                }
+            ]
+        }, 
+        {
+            "begin": "(```)\\s*(ejs|underscore|lodash)\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.ejs"
+                }
+            ]
+        }, 
+        {
+            "begin": "(```)\\s*ruby\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.ruby"
+                }
+            ]
+        }, 
+        {
+            "begin": "(```)\\s*perl\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.perl"
                 }
             ]
         }, 
