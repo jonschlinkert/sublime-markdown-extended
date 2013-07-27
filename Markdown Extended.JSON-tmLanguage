@@ -168,6 +168,60 @@
             ]
         }, 
         {
+            "begin": "(```)\\s*(styl)\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.stylus"
+                }
+            ]
+        }, 
+        {
+            "begin": "(```)\\s*(sass)\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.sass"
+                }
+            ]
+        }, 
+        {
+            "begin": "(```)\\s*(scss)\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.scss"
+                }
+            ]
+        }, 
+        {
             "begin": "(```)\\s*(yaml)\\s*$", 
             "captures": {
                 "1": {
@@ -182,24 +236,6 @@
             "patterns": [
                 {
                     "include": "source.yaml"
-                }
-            ]
-        }, 
-        {
-            "begin": "(```)\\s*(sass|scss)\\s*$", 
-            "captures": {
-                "1": {
-                    "name": "punctuation.definition.fenced.markdown"
-                }, 
-                "2": {
-                    "name": "variable.language.fenced.markdown"
-                }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
-            "patterns": [
-                {
-                    "include": "source.sass"
                 }
             ]
         }, 
