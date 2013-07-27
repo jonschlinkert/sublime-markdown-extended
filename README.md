@@ -39,6 +39,12 @@ of the following methods:
 **NOTE**: If anyone knows how to _force_ Sublime Text 3 to always use this as the default over the built-in highlighting for markdown, please let me know so I can do it (and add it to the readme :-)
 
 
+**Handlebars version**
+
+Included in this package is a file named `Markdown Extended.tmLanguage-handlebars`, which provides additional syntax highlighting for Handlebars syntax inside markdown files.
+
+If you use [assemble](http://assemble.io) for generating documentation, sites or components, then activate the Handlebars version instead. To do so, first delete `Markdown Extended.tmLanguage`, then renamed the extension of `Markdown Extended.tmLanguage-handlebars` to just `.tmLanguage`.
+
 
 ## Features:
 * Support for [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html)
@@ -111,8 +117,10 @@ _Note that in order for a language to be highlighted properly, you must have the
 * `md|markdown`
 * `perl`
 * `ruby`
-* `sass|scss`
+* `sass`
+* `scss`
 * `shell|bash`
+* `stylus`
 * `xml`
 * `yaml`
 
