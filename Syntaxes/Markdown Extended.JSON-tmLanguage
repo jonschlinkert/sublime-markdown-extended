@@ -400,7 +400,7 @@
             "name": "meta.disable-markdown", 
             "patterns": [
                 {
-                    "include": "text.html.basic"
+                    "include": "text.html.handlebars"
                 }
             ]
         }, 
@@ -411,7 +411,7 @@
             "name": "meta.disable-markdown", 
             "patterns": [
                 {
-                    "include": "text.html.basic"
+                    "include": "text.html.handlebars"
                 }
             ]
         }, 
@@ -469,7 +469,7 @@
                     "include": "#inline"
                 }, 
                 {
-                    "include": "text.html.basic"
+                    "include": "text.html.handlebars"
                 }, 
                 {
                     "captures": {
@@ -565,7 +565,7 @@
                     "end": "(?<=>)", 
                     "patterns": [
                         {
-                            "include": "text.html.basic"
+                            "include": "text.html.handlebars"
                         }
                     ]
                 }, 
@@ -769,7 +769,7 @@
                     "end": "(?<=>)", 
                     "patterns": [
                         {
-                            "include": "text.html.basic"
+                            "include": "text.html.handlebars"
                         }
                     ]
                 }, 
