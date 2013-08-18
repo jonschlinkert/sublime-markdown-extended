@@ -144,6 +144,34 @@
     </dict>
     <dict>
       <key>begin</key>
+      <string>(```)\s*(html|html5)\s*$</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.definition.fenced.markdown</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>variable.language.fenced.markdown</string>
+        </dict>
+      </dict>
+      <key>end</key>
+      <string>(\1)\n</string>
+      <key>name</key>
+      <string>markup.raw.block.markdown markup.raw.block.fenced.markdown</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>text.html.basic</string>
+        </dict>
+      </array>
+    </dict>
+    <dict>
+      <key>begin</key>
       <string>(```)\s*(xml)\s*$</string>
       <key>captures</key>
       <dict>
