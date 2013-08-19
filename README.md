@@ -36,15 +36,18 @@ of the following methods:
 * Select from the list of supported languages in your status bar at the bottom right corner of your editor
 * `ctrl + shift + p` and search for "Markdown Extended"
 
+### 3. Make "Markdown Extended" the default
 To make `Markdown Extended` the default highlighting for the current extension:
- Open a file with the extension you want to set a default for (i.e. `.md`) and navigate through the following menus:
- `View -> Syntax -> Open all with current extension as... ->Markdown Extended`
 
-**Handlebars version**
+1. Open a file with the extension you want to set a default for (i.e. `.md`)
+2. Navigate through the following menus in Sublime Text: `View -> Syntax -> Open all with current extension as... -> Markdown Extended`
+
+
+<!-- **Handlebars version**
 
 Included in this package is a file named `Markdown Extended.tmLanguage-handlebars`, which provides additional syntax highlighting for Handlebars syntax inside markdown files.
 
-If you use [assemble](http://assemble.io) for generating documentation, sites or components, then activate the Handlebars version instead. To do so, first delete `Markdown Extended.tmLanguage`, then renamed the extension of `Markdown Extended.tmLanguage-handlebars` to just `.tmLanguage`.
+If you use [assemble](http://assemble.io) for generating documentation, sites or components, then activate the Handlebars version instead. To do so, first delete `Markdown Extended.tmLanguage`, then renamed the extension of `Markdown Extended.tmLanguage-handlebars` to just `.tmLanguage`. -->
 
 
 ## Features:
