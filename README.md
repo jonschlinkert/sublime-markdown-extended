@@ -36,8 +36,9 @@ of the following methods:
 * Select from the list of supported languages in your status bar at the bottom right corner of your editor
 * `ctrl + shift + p` and search for "Markdown Extended"
 
-**NOTE**: If anyone knows how to _force_ Sublime Text 3 to always use this as the default over the built-in highlighting for markdown, please let me know so I can do it (and add it to the readme :-)
-
+To make `Markdown Extended` the default highlighting for the current extension:
+ Open a file with the extension you want to set a default for (i.e. `.md`) and navigate through the following menus:
+ `View -> Syntax -> Open all with current extension as... ->Markdown Extended`
 
 **Handlebars version**
 
