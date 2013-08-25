@@ -400,7 +400,7 @@
     </dict>
     <dict>
       <key>begin</key>
-      <string>(```)\s*(coffee)\s*$</string>
+      <string>(```)\s*(coffee|coffeescript)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
