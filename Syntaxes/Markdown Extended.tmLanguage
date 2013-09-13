@@ -456,6 +456,90 @@
     </dict>
     <dict>
       <key>begin</key>
+      <string>(```)\s*(java)\s*$</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.definition.fenced.markdown</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>variable.language.fenced.markdown</string>
+        </dict>
+      </dict>
+      <key>end</key>
+      <string>(\1)\n</string>
+      <key>name</key>
+      <string>markup.raw.block.markdown markup.raw.block.fenced.markdown</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>source.java</string>
+        </dict>
+      </array>
+    </dict>
+    <dict>
+      <key>begin</key>
+      <string>(```)\s*(c)\s*$</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.definition.fenced.markdown</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>variable.language.fenced.markdown</string>
+        </dict>
+      </dict>
+      <key>end</key>
+      <string>(\1)\n</string>
+      <key>name</key>
+      <string>markup.raw.block.markdown markup.raw.block.fenced.markdown</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>source.c</string>
+        </dict>
+      </array>
+    </dict>
+    <dict>
+      <key>begin</key>
+      <string>(```)\s*(cpp)\s*$</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.definition.fenced.markdown</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>variable.language.fenced.markdown</string>
+        </dict>
+      </dict>
+      <key>end</key>
+      <string>(\1)\n</string>
+      <key>name</key>
+      <string>markup.raw.block.markdown markup.raw.block.fenced.markdown</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>source.c++</string>
+        </dict>
+      </array>
+    </dict>
+    <dict>
+      <key>begin</key>
       <string>(```)\s*(ejs|underscore|lodash)\s*$</string>
       <key>captures</key>
       <dict>
