@@ -124,6 +124,7 @@ _Note that in order for a language to be highlighted properly, you must have the
 * `md|markdown`
 * `perl`
 * `python`
+* `r`
 * `ruby`
 * `sass`
 * `scss`
