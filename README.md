@@ -110,54 +110,92 @@ The following languages are highlighted inside fenced code blocks:
 
 _Note that in order for a language to be highlighted properly, you must have the language installed in Sublime Text._
 
+* `coffee|coffeescript`
+* `cpp`
+* `css`
 * `c`
 * `c++`
-* `coffee`
-* `css`
 * `diff`
-* `hbs|handlebars`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
+* `ejs`
+* `underscore`
+* `lodash`
+* `handlebars|hbs`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
 * `html|html5`
 * `java`
+* `javascript|js`
 * `json`
-* `js|javascript`
 * `less`
 * `md|markdown`
+* `objective-c`
+* `objective-c++`
 * `perl`
-* `python`
-* `r`
 * `ruby`
 * `sass`
 * `scss`
-* `shell|bash`
-* `stylus`
+* `shell`
+* `bash`
+* `sql|ddl|dml`
+* `styl`
+* `swig`
+* `liquid`
 * `xml`
 * `yaml`
 
 
-### Turn this:
-![image](https://f.cloud.github.com/assets/383994/726869/5f066f14-e13d-11e2-9cdd-118f56a39da5.png)
+### CSS
+#### Before
+![image](https://f.cloud.github.com/assets/383994/1525715/7ece6886-4bd9-11e3-831b-e956c5feddba.png)
 
-### Into this:
-![image](https://f.cloud.github.com/assets/383994/726871/893061c8-e13d-11e2-9bf5-189d850ccc66.png)
+#### After
+![image](https://f.cloud.github.com/assets/383994/1525717/872193d2-4bd9-11e3-8b44-7dfb08b3aac2.png)
 
 
-### YAML Front Matter
+### LESS
+#### Before
+![image](https://f.cloud.github.com/assets/383994/1525757/0e74a69e-4bda-11e3-8218-e7adc619b5ae.png)
 
-#### Turn this:
-![image](https://f.cloud.github.com/assets/383994/726861/2f03fb2a-e13c-11e2-9df0-cb9514b301fe.png)
+#### After
+![image](https://f.cloud.github.com/assets/383994/1525760/16ba0376-4bda-11e3-9f54-8cf039c8a6f9.png)
 
-#### Into this:
-![image](https://f.cloud.github.com/assets/383994/726865/aa2cdb6e-e13c-11e2-89b0-c06923447ec9.png)
+
+### HTML
+#### Before
+![image](https://f.cloud.github.com/assets/383994/1525726/b049629e-4bd9-11e3-853f-04e2e704bbea.png)
+
+#### After
+![image](https://f.cloud.github.com/assets/383994/1525730/b6b4f652-4bd9-11e3-9bab-ab26bf8fc761.png)
+
+
+### JavaScript
+#### Before
+![image](https://f.cloud.github.com/assets/383994/1525736/d94cf5f2-4bd9-11e3-98ff-578062c33853.png)
+
+#### After
+![image](https://f.cloud.github.com/assets/383994/1525739/e09b5006-4bd9-11e3-81a3-17d18527dafa.png)
+
+
+### Coffee
+#### Before
+![image](https://f.cloud.github.com/assets/383994/1525694/1d80acb0-4bd9-11e3-9527-b20bde8ceb0f.png)
+
+#### After
+![image](https://f.cloud.github.com/assets/383994/1525696/2c83774c-4bd9-11e3-83ac-fe70d00e8088.png)
 
 
 ### Shell
-
-#### Turn this:
+#### Before
 ![image](https://f.cloud.github.com/assets/383994/851162/38fc84ae-f496-11e2-9014-81b91da16232.png)
 
-#### Into this
+#### After
 ![image](https://f.cloud.github.com/assets/383994/851165/468b3282-f496-11e2-8a2d-ebf6f9c925f6.png)
 
+
+### YAML Front Matter
+#### Before
+![image](https://f.cloud.github.com/assets/383994/726861/2f03fb2a-e13c-11e2-9df0-cb9514b301fe.png)
+
+#### After
+![image](https://f.cloud.github.com/assets/383994/726865/aa2cdb6e-e13c-11e2-89b0-c06923447ec9.png)
 
 
 ## Author
