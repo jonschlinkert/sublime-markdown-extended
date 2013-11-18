@@ -42,7 +42,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(c)\\s*$",
+      "begin": "(```|~~~)\\s*(c)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(cpp)\\s*$",
+      "begin": "(```|~~~)\\s*(cpp)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(coffee|coffeescript)\\s*$",
+      "begin": "(```|~~~)\\s*(coffee|coffeescript)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(css)\\s*$",
+      "begin": "(```|~~~)\\s*(css)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -114,7 +114,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(ejs|underscore|lodash)\\s*$",
+      "begin": "(```|~~~)\\s*(ejs|underscore|lodash)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -132,7 +132,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(diff)\\s*$",
+      "begin": "(```|~~~)\\s*(diff)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -150,7 +150,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(hbs|handlebars|html|html5)\\s*$",
+      "begin": "(```|~~~)\\s*(hbs|handlebars|html|html5)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -171,7 +171,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(java)\\s*$",
+      "begin": "(```|~~~)\\s*(java)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -189,7 +189,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(javascript|js)\\s*$",
+      "begin": "(```|~~~)\\s*(javascript|js)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -207,7 +207,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(json)\\s*$",
+      "begin": "(```|~~~)\\s*(json)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -225,7 +225,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(less)\\s*$",
+      "begin": "(```|~~~)\\s*(less)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -243,7 +243,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(md|markdown)\\s*$",
+      "begin": "(```|~~~)\\s*(md|markdown)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -261,7 +261,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(obj(?:ective\\-|)c)\\s*$",
+      "begin": "(```|~~~)\\s*(obj(?:ective\\-|)c)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -279,7 +279,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(obj(?:ective\\-|)c\\+\\+)\\s*$",
+      "begin": "(```|~~~)\\s*(obj(?:ective\\-|)c\\+\\+)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -297,7 +297,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(perl)\\s*$",
+      "begin": "(```|~~~)\\s*(perl)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -315,7 +315,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*ruby\\s*$",
+      "begin": "(```|~~~)\\s*ruby\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -333,7 +333,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(sass)\\s*$",
+      "begin": "(```|~~~)\\s*(sass)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -351,7 +351,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(scss)\\s*$",
+      "begin": "(```|~~~)\\s*(scss)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -369,7 +369,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(shell|bash)\\s*$",
+      "begin": "(```|~~~)\\s*(shell|bash)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -387,7 +387,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(styl)\\s*$",
+      "begin": "(```|~~~)\\s*(styl)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -405,7 +405,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(sql|ddl|dml)\\s*$",
+      "begin": "(```|~~~)\\s*(sql|ddl|dml)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -423,7 +423,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(swig|liquid)\\s*$",
+      "begin": "(```|~~~)\\s*(swig|liquid)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -441,7 +441,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(xml)\\s*$",
+      "begin": "(```|~~~)\\s*(xml)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -459,7 +459,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(yaml)\\s*$",
+      "begin": "(```|~~~)\\s*(yaml)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
@@ -477,7 +477,7 @@
       ]
     },
     {
-      "begin": "(```)\\s*(\\w*)\\s*$",
+      "begin": "(```|~~~)\\s*(\\w*)\\s*$",
       "captures": {
         "1": {
           "name": "punctuation.definition.fenced.markdown"
