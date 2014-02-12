@@ -126,6 +126,7 @@ _Note that in order for a language to be highlighted properly, you must have the
 * `javascript|js`
 * `json`
 * `less`
+* `ls|livescript|LiveScript`
 * `md|markdown`
 * `objective-c`
 * `objective-c++`
@@ -182,6 +183,13 @@ _Note that in order for a language to be highlighted properly, you must have the
 
 #### After
 ![image](https://f.cloud.github.com/assets/383994/1525696/2c83774c-4bd9-11e3-83ac-fe70d00e8088.png)
+
+
+### LiveScript
+#### Before
+![image](https://f.cloud.github.com/assets/922234/2147750/62c04f60-93d7-11e3-95bd-bdf287e09751.png)
+#### After
+![image](https://f.cloud.github.com/assets/922234/2147749/62c01cd4-93d7-11e3-956b-058cafade685.png)
 
 
 ### Shell
