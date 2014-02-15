@@ -46,6 +46,38 @@
 
     <dict>
       <key>begin</key>
+      <string>(?&lt;!\s)---\s*coffee\n$</string>
+      <key>end</key>
+      <string>^---\s</string>
+      <key>name</key>
+      <string>markup.raw.coffee.front-matter</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>source.coffee</string>
+        </dict>
+      </array>
+    </dict>
+
+    <dict>
+      <key>begin</key>
+      <string>(?&lt;!\s)---\s*json\n$</string>
+      <key>end</key>
+      <string>^---\s</string>
+      <key>name</key>
+      <string>markup.raw.json.front-matter</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>source.json</string>
+        </dict>
+      </array>
+    </dict>
+
+    <dict>
+      <key>begin</key>
       <string>(?x)^
         (?= [ ]{,3}&gt;.
         | ([ ]{4}|\t)(?!$)

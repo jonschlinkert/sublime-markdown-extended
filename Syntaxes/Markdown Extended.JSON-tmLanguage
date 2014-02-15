@@ -22,6 +22,26 @@
             ]
         }, 
         {
+            "begin": "(?<!\\s)---\\s*coffee\\n$", 
+            "end": "^---\\s", 
+            "name": "markup.raw.coffee.front-matter", 
+            "patterns": [
+                {
+                    "include": "source.coffee"
+                }
+            ]
+        }, 
+        {
+            "begin": "(?<!\\s)---\\s*json\\n$", 
+            "end": "^---\\s", 
+            "name": "markup.raw.json.front-matter", 
+            "patterns": [
+                {
+                    "include": "source.json"
+                }
+            ]
+        }, 
+        {
             "begin": "(?x)^\n        (?= [ ]{,3}>.\n        | ([ ]{4}|\\t)(?!$)\n        | [#]{1,6}\\s*+\n        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n        )", 
             "comment": "\n        We could also use an empty end match and set\n        applyEndPatternLast, but then we must be sure that the begin\n        pattern will only match stuff matched by the sub-patterns.\n      ", 
             "end": "(?x)^\n        (?! [ ]{,3}>.\n        | ([ ]{4}|\\t)\n        | [#]{1,6}\\s*+\n        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n        )", 
