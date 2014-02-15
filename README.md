@@ -66,7 +66,8 @@ The following examples use the [Monokai Extended](https://github.com/jonschlinke
 ## Whitespace
 
 ### Significant whitespace
-**Whitespace is significant** _only directly before and directly after fenced code blocks_! Following these instructions will ensure that highlighting works properly and consistently.
+
+**Whitespace is significant** _only directly before and directly after fenced code blocks_! Following these instructions will ensure that highlighting works properly and consistently._
 
 This is very simple:
 
@@ -87,6 +88,7 @@ This is what it looks like with proper spacing:
 ![image](https://f.cloud.github.com/assets/383994/782119/5b27105a-ea35-11e2-9ea8-7a195f381d7c.png)
 
 #### Whitespace after the block
+
 Also add a new line after code blocks, but make sure that there is no trailing whitespace next to the bottom fence.
 
 **With a trailing whitespace**
@@ -97,20 +99,14 @@ Also add a new line after code blocks, but make sure that there is no trailing w
 
 ![image](https://f.cloud.github.com/assets/383994/782145/f534f1da-ea35-11e2-8689-d606494f7830.png)
 
-
-
-
-## Examples
-
-## GFM Fenced Code Blocks
-
 ### Supported languages
 
 The following languages are highlighted inside fenced code blocks:
 
-_Note that in order for a language to be highlighted properly, you must have the language installed in Sublime Text._
+Note that in order for a language to be highlighted properly, you must have the language installed in Sublime Text.
 
 * `coffee|coffeescript`
+* `coffee front matter`
 * `cpp`
 * `css`
 * `c`
@@ -125,6 +121,7 @@ _Note that in order for a language to be highlighted properly, you must have the
 * `java`
 * `javascript|js`
 * `json`
+* `json front matter`
 * `less`
 * `ls|livescript|LiveScript`
 * `md|markdown`
@@ -143,6 +140,7 @@ _Note that in order for a language to be highlighted properly, you must have the
 * `liquid`
 * `xml`
 * `yaml`
+* `yaml front matter`
 
 
 ### CSS
@@ -199,13 +197,23 @@ _Note that in order for a language to be highlighted properly, you must have the
 #### After
 ![image](https://f.cloud.github.com/assets/383994/851165/468b3282-f496-11e2-8a2d-ebf6f9c925f6.png)
 
-
 ### YAML Front Matter
+See [gray-matter](https://github.com/assemble/gray-matter)
+
 #### Before
 ![image](https://f.cloud.github.com/assets/383994/726861/2f03fb2a-e13c-11e2-9df0-cb9514b301fe.png)
 
 #### After
 ![image](https://f.cloud.github.com/assets/383994/726865/aa2cdb6e-e13c-11e2-89b0-c06923447ec9.png)
+
+### Coffee Front Matter
+See [gray-matter](https://github.com/assemble/gray-matter)
+
+#### Before
+![image](https://f.cloud.github.com/assets/383994/2179180/fe679602-9694-11e3-938b-1e74196d4341.png)
+
+#### After
+![image](https://f.cloud.github.com/assets/383994/2179172/82a6dc1c-9694-11e3-89f1-772bedf02384.png)
 
 
 ## Author
