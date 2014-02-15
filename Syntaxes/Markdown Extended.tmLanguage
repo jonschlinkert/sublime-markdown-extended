@@ -1724,32 +1724,32 @@
     <dict>
       <key>begin</key>
       <string>(?x)
-            (?&lt;=[ \n\r\A]|^)(\*|_)(?=\S)                        # Open
+            (\*|_)(?=\S)                         # Open
             (?=
               (
-                  &lt;[^&gt;]*+&gt;             # HTML tags
+                  &lt;[^&gt;]*+&gt;              # HTML tags
                 | (?&lt;raw&gt;`+)([^`]|(?!(?&lt;!`)\k&lt;raw&gt;(?!`))`)*+\k&lt;raw&gt;
-                                  # Raw
-                | \\[\\`*_{}\[\]()#.!+\-&gt;]?+     # Escapes
+                                                 # Raw
+                | \\[\\`*_{}\[\]()#.!+\-&gt;]?+  # Escapes
                 | \[
                 (
-                        (?&lt;square&gt;          # Named group
-                      [^\[\]\\]       # Match most chars
-                          | \\.           # Escaped chars
-                          | \[ \g&lt;square&gt;*+ \]    # Nested brackets
+                        (?&lt;square&gt;         # Named group
+                      [^\[\]\\]                  # Match most chars
+                          | \\.                  # Escaped chars
+                          | \[ \g&lt;square&gt;*+ \]  # Nested brackets
                         )*+
                   \]
                   (
-                    (             # Reference Link
-                      [ ]?          # Optional space
-                      \[[^\]]*+\]       # Ref name
+                    (                            # Reference Link
+                      [ ]?                       # Optional space
+                      \[[^\]]*+\]                # Ref name
                     )
-                    | (             # Inline Link
-                      \(            # Opening paren
-                        [ \t]*+       # Optional whtiespace
-                        &lt;?(.*?)&gt;?     # URL
-                        [ \t]*+       # Optional whtiespace
-                        (         # Optional Title
+                    | (                          # Inline Link
+                      \(                         # Opening paren
+                        [ \t]*+                  # Optional whtiespace
+                        &lt;?(.*?)&gt;?          # URL
+                        [ \t]*+                  # Optional whtiespace
+                        (                        # Optional Title
                           (?&lt;title&gt;['"])
                           (.*?)
                           \k&lt;title&gt;
@@ -1758,11 +1758,11 @@
                     )
                   )
                 )
-                | \1\1                # Must be bold closer
-                | (?!(?&lt;=\S)\1(?=[ \n\r\Z])).            # Everything besides
-                                  # style closer
+                | \1\1                        # Must be bold closer
+                | (?!(?&lt;=\S)\1).           # Everything besides
+                                              # style closer
               )++
-              (?&lt;=\S)\1(?=[ \n\r\Z])               # Close
+              (?&lt;=\S)\1                    # Close
             )
           </string>
       <key>captures</key>
