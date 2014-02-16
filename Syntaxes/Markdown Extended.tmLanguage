@@ -1806,7 +1806,7 @@
         </dict>
       </dict>
       <key>end</key>
-      <string>(?&lt;=\S)(\1)((?!\1)|(?=\1\1))(?=[ \r\n\t\Z])</string>
+      <string>(?&lt;=\S)(\1)((?!\1)|(?=\1\1))</string>
       <key>name</key>
       <string>markup.italic.markdown</string>
       <key>patterns</key>
