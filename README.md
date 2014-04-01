@@ -8,7 +8,7 @@ Although substantial changes have been made, thank you [@aziz](https://github.co
 
 Get [Monokai Extended](https://github.com/jonschlinkert/sublime-monokai-extended) for better highlighting.
 
-#### [Jump to Examples ↓](#examples)
+#### [Jump to Examples ↓](#markdown-enhancements)
 
 
 ## Getting Started
