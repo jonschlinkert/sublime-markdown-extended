@@ -851,7 +851,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(shell|bash)\s*$</string>
+      <string>(```)\s*(sh|shell|bash)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>

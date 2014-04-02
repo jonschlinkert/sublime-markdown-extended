@@ -515,7 +515,7 @@
             ]
         }, 
         {
-            "begin": "(```)\\s*(shell|bash)\\s*$", 
+            "begin": "(```)\\s*(sh|shell|bash)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
