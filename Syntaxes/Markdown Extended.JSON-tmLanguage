@@ -679,7 +679,7 @@
                 },
                 {
                     "include": "text.html.handlebars"
-                }                
+                }
             ]
         }, 
         {
