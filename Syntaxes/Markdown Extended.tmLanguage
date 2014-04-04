@@ -706,7 +706,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*\{?\s*(r) .*?\}?\s*$</string>
+      <string>(```)\s*\{?\s*(r)(?:[ \}].*$|\}?$)</string>
       <key>captures</key>
       <dict>
         <key>1</key>
