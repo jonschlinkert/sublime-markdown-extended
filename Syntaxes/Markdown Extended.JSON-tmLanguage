@@ -675,8 +675,11 @@
             "name": "meta.disable-markdown", 
             "patterns": [
                 {
+                    "include": "text.html.basic"
+                },
+                {
                     "include": "text.html.handlebars"
-                }
+                }                
             ]
         }, 
         {
@@ -685,6 +688,9 @@
             "end": "$\\n?", 
             "name": "meta.disable-markdown", 
             "patterns": [
+                {
+                    "include": "text.html.basic"
+                },            
                 {
                     "include": "text.html.handlebars"
                 }
