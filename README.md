@@ -124,6 +124,7 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `json front matter`
 * `less`
 * `ls|livescript|LiveScript`
+* `lua`
 * `md|markdown`
 * `objective-c`
 * `objective-c++`

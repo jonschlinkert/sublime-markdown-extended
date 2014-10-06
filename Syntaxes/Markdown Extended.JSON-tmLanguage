@@ -317,6 +317,24 @@
             ]
         }, 
         {
+            "begin": "(```)\\s*(lua)\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.lua"
+                }
+            ]
+        }, 
+        {
             "begin": "(```)\\s*(md|markdown)\\s*$", 
             "captures": {
                 "1": {
