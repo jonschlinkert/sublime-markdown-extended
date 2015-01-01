@@ -122,7 +122,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(c)\s*$</string>
+      <string>(```|~~~)\s*(c)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -151,7 +151,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(cpp)\s*$</string>
+      <string>(```|~~~)\s*(cpp)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -180,7 +180,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(coffee|coffeescript)\s*$</string>
+      <string>(```|~~~)\s*(coffee|coffeescript)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -209,7 +209,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(jade)\s*$</string>
+      <string>(```|~~~)\s*(jade)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -238,7 +238,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(css)\s*$</string>
+      <string>(```|~~~)\s*(css)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -267,7 +267,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(ejs|underscore|lodash)\s*$</string>
+      <string>(```|~~~)\s*(ejs|underscore|lodash)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -296,7 +296,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(diff)\s*$</string>
+      <string>(```|~~~)\s*(diff)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -325,7 +325,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(go|golang)\s*$</string>
+      <string>(```|~~~)\s*(go|golang)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -354,7 +354,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(hbs|handlebars|html|html5)\s*$</string>
+      <string>(```|~~~)\s*(hbs|handlebars|html|html5)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -387,7 +387,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(java)\s*$</string>
+      <string>(```|~~~)\s*(java)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -416,7 +416,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(javascript|js)\s*$</string>
+      <string>(```|~~~)\s*(javascript|js)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -445,7 +445,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(json)\s*$</string>
+      <string>(```|~~~)\s*(json)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -474,7 +474,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(less)\s*$</string>
+      <string>(```|~~~)\s*(less)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -503,7 +503,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(ls|livescript|LiveScript)\s*$</string>
+      <string>(```|~~~)\s*(ls|livescript|LiveScript)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -532,7 +532,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(lua)\s*$</string>
+      <string>(```|~~~)\s*(lua)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -561,7 +561,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(md|markdown)\s*$</string>
+      <string>(```|~~~)\s*(md|markdown)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -590,7 +590,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(swift)\s*$</string>
+      <string>(```|~~~)\s*(swift)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -619,7 +619,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(obj(?:ective\-|)c)\s*$</string>
+      <string>(```|~~~)\s*(obj(?:ective\-|)c)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -648,7 +648,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(obj(?:ective\-|)c\+\+)\s*$</string>
+      <string>(```|~~~)\s*(obj(?:ective\-|)c\+\+)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -677,7 +677,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(perl)\s*$</string>
+      <string>(```|~~~)\s*(perl)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -706,7 +706,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(php)\s*$</string>
+      <string>(```|~~~)\s*(php)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -735,7 +735,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(python)\s*$</string>
+      <string>(```|~~~)\s*(python)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -764,7 +764,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*\{?\s*(r)(?:[ \}].*$|\}?$)</string>
+      <string>(```|~~~)\s*\{?\s*(r)(?:[ \}].*$|\}?$)</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -793,7 +793,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(ruby)\s*$</string>
+      <string>(```|~~~)\s*(ruby)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -822,7 +822,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(rust)\s*$</string>
+      <string>(```|~~~)\s*(rust)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -851,7 +851,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(sass)\s*$</string>
+      <string>(```|~~~)\s*(sass)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -880,7 +880,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(scala)\s*$</string>
+      <string>(```|~~~)\s*(scala)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -909,7 +909,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(scss)\s*$</string>
+      <string>(```|~~~)\s*(scss)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -938,7 +938,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(sh|shell|bash)\s*$</string>
+      <string>(```|~~~)\s*(sh|shell|bash)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -967,7 +967,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(sql|ddl|dml)\s*$</string>
+      <string>(```|~~~)\s*(sql|ddl|dml)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -996,7 +996,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(styl)\s*$</string>
+      <string>(```|~~~)\s*(styl)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -1025,7 +1025,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(swig|liquid)\s*$</string>
+      <string>(```|~~~)\s*(swig|liquid)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -1054,7 +1054,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(xml)\s*$</string>
+      <string>(```|~~~)\s*(xml)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -1083,7 +1083,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(yaml)\s*$</string>
+      <string>(```|~~~)\s*(yaml)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -1112,7 +1112,7 @@
 
     <dict>
       <key>begin</key>
-      <string>(```)\s*(\w*)\s*$</string>
+      <string>(```|~~~)\s*(\w*)\s*$</string>
       <key>captures</key>
       <dict>
         <key>1</key>
