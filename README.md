@@ -137,6 +137,7 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `shell`
 * `bash`
 * `sql|ddl|dml`
+* `postgresql|postgres|pgsql`
 * `styl`
 * `swift`
 * `swig`
