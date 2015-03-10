@@ -150,6 +150,24 @@
                     "include": "source.css"
                 }
             ]
+        },  
+        {
+            "begin": "(```|~~~)\\s*(csharp)\\s*$", 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            }, 
+            "end": "(\\1)\\n", 
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "patterns": [
+                {
+                    "include": "source.cs"
+                }
+            ]
         }, 
         {
             "begin": "(```|~~~)\\s*(ejs|underscore|lodash)\\s*$", 
