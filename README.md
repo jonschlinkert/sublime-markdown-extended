@@ -108,6 +108,7 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `coffee|coffeescript`
 * `coffee front matter`
 * `cpp`
+* `csharp`
 * `css`
 * `c`
 * `c++`
