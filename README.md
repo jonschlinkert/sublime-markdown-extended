@@ -123,6 +123,7 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `javascript|js`
 * `json`
 * `json front matter`
+* `julia`
 * `less`
 * `ls|livescript|LiveScript`
 * `lua`

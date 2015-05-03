@@ -1,375 +1,393 @@
 {
     "fileTypes": [
-        "mdown", 
-        "markdown", 
-        "markdn", 
-        "md.hbs", 
+        "mdown",
+        "markdown",
+        "markdn",
+        "md.hbs",
         "md"
-    ], 
-    "foldingStartMarker": "(?x)\n    (<(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\\b.*?>\n    |<!--(?!.*-->)\n    |\\{\\s*($|\\?>\\s*$|//|/\\*(.*\\*/\\s*$|(?!.*?\\*/)))\n    )", 
-    "foldingStopMarker": "(?x)\n    (</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)>\n    |^\\s*-->\n    |(^|\\s)\\}\n    )", 
-    "keyEquivalent": "^~M", 
-    "name": "Markdown Extended", 
+    ],
+    "foldingStartMarker": "(?x)\n    (<(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\\b.*?>\n    |<!--(?!.*-->)\n    |\\{\\s*($|\\?>\\s*$|//|/\\*(.*\\*/\\s*$|(?!.*?\\*/)))\n    )",
+    "foldingStopMarker": "(?x)\n    (</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)>\n    |^\\s*-->\n    |(^|\\s)\\}\n    )",
+    "keyEquivalent": "^~M",
+    "name": "Markdown Extended",
     "patterns": [
         {
-            "begin": "(?<!\\s)---\\n$", 
-            "end": "^---\\s", 
-            "name": "markup.raw.yaml.front-matter", 
+            "begin": "(?<!\\s)---\\n$",
+            "end": "^---\\s",
+            "name": "markup.raw.yaml.front-matter",
             "patterns": [
                 {
                     "include": "source.yaml"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(?<!\\s)---\\s*coffee\\n$", 
-            "end": "^---\\s", 
-            "name": "markup.raw.coffee.front-matter", 
+            "begin": "(?<!\\s)---\\s*coffee\\n$",
+            "end": "^---\\s",
+            "name": "markup.raw.coffee.front-matter",
             "patterns": [
                 {
                     "include": "source.coffee"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(?<!\\s)---\\s*json\\n$", 
-            "end": "^---\\s", 
-            "name": "markup.raw.json.front-matter", 
+            "begin": "(?<!\\s)---\\s*json\\n$",
+            "end": "^---\\s",
+            "name": "markup.raw.json.front-matter",
             "patterns": [
                 {
                     "include": "source.json"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(?x)^\n        (?= [ ]{,3}>.\n        | ([ ]{4}|\\t)(?!$)\n        | [#]{1,6}\\s*+\n        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n        )", 
-            "comment": "\n        We could also use an empty end match and set\n        applyEndPatternLast, but then we must be sure that the begin\n        pattern will only match stuff matched by the sub-patterns.\n      ", 
-            "end": "(?x)^\n        (?! [ ]{,3}>.\n        | ([ ]{4}|\\t)\n        | [#]{1,6}\\s*+\n        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n        )", 
-            "name": "meta.block-level.markdown", 
+            "begin": "(?x)^\n        (?= [ ]{,3}>.\n        | ([ ]{4}|\\t)(?!$)\n        | [#]{1,6}\\s*+\n        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n        )",
+            "comment": "\n        We could also use an empty end match and set\n        applyEndPatternLast, but then we must be sure that the begin\n        pattern will only match stuff matched by the sub-patterns.\n      ",
+            "end": "(?x)^\n        (?! [ ]{,3}>.\n        | ([ ]{4}|\\t)\n        | [#]{1,6}\\s*+\n        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n        )",
+            "name": "meta.block-level.markdown",
             "patterns": [
                 {
                     "include": "#block_quote"
-                }, 
+                },
                 {
                     "include": "#block_raw"
-                }, 
+                },
                 {
                     "include": "#heading"
-                }, 
+                },
                 {
                     "include": "#separator"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(c)\\s*$", 
+            "begin": "(```|~~~)\\s*(c)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.c"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(cpp)\\s*$", 
+            "begin": "(```|~~~)\\s*(cpp)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.c++"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(coffee|coffeescript)\\s*$", 
+            "begin": "(```|~~~)\\s*(coffee|coffeescript)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.coffee"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(jade)\\s*$", 
+            "begin": "(```|~~~)\\s*(jade)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.jade"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(css)\\s*$", 
+            "begin": "(```|~~~)\\s*(css)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.css"
                 }
             ]
-        },  
+        },
         {
-            "begin": "(```|~~~)\\s*(csharp)\\s*$", 
+            "begin": "(```|~~~)\\s*(csharp)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.cs"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(ejs|underscore|lodash)\\s*$", 
+            "begin": "(```|~~~)\\s*(ejs|underscore|lodash)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.ejs"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(diff)\\s*$", 
+            "begin": "(```|~~~)\\s*(diff)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.diff"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(go|golang)\\s*$", 
+            "begin": "(```|~~~)\\s*(go|golang)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.go"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(hbs|handlebars|html|html5)\\s*$", 
+            "begin": "(```|~~~)\\s*(hbs|handlebars|html|html5)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "text.html.basic"
-                }, 
+                },
                 {
                     "include": "text.html.handlebars"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(java)\\s*$", 
+            "begin": "(```|~~~)\\s*(java)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.java"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(javascript|js)\\s*$", 
+            "begin": "(```|~~~)\\s*(javascript|js)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.js"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(json)\\s*$", 
+            "begin": "(```|~~~)\\s*(json)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.json"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(less)\\s*$", 
+            "begin": "(```)\\s*(julia|jl)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
+            "patterns": [
+                {
+                    "include": "source.julia"
+                }
+            ]
+        },
+        {
+            "begin": "(```)\\s*(less)\\s*$",
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                },
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.css.less"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(ls|livescript|LiveScript)\\s*$", 
+            "begin": "(```|~~~)\\s*(ls|livescript|LiveScript)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.livescript"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(lua)\\s*$", 
+            "begin": "(```|~~~)\\s*(lua)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.lua"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(md|markdown)\\s*$", 
+            "begin": "(```|~~~)\\s*(md|markdown)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "text.html.markdown"
                 }
             ]
-        }, 
+        },
         {
             "begin": "(```|~~~)\\s*(swift)\\s*$",
             "captures": {
@@ -389,221 +407,221 @@
             ]
         },
         {
-            "begin": "(```|~~~)\\s*(obj(?:ective\\-|)c)\\s*$", 
+            "begin": "(```|~~~)\\s*(obj(?:ective\\-|)c)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.objc"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(obj(?:ective\\-|)c\\+\\+)\\s*$", 
+            "begin": "(```|~~~)\\s*(obj(?:ective\\-|)c\\+\\+)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.objc++"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(perl)\\s*$", 
+            "begin": "(```|~~~)\\s*(perl)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.perl"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(php)\\s*$", 
+            "begin": "(```|~~~)\\s*(php)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.php"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(python)\\s*$", 
+            "begin": "(```|~~~)\\s*(python)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.python"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(ruby)\\s*$", 
+            "begin": "(```|~~~)\\s*(ruby)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.ruby"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(rust)\\s*$", 
+            "begin": "(```|~~~)\\s*(rust)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.rust"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(sass)\\s*$", 
+            "begin": "(```|~~~)\\s*(sass)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.sass"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(scala)\\s*$", 
+            "begin": "(```|~~~)\\s*(scala)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.scala"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(scss)\\s*$", 
+            "begin": "(```|~~~)\\s*(scss)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.scss"
                 }
             ]
-        }, 
+        },
         {
             "begin": "(```|~~~)\\s*(sh|shell|bash)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.shell"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(sql|ddl|dml)\\s*$", 
+            "begin": "(```|~~~)\\s*(sql|ddl|dml)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.sql"
                 }
             ]
-        }, 
+        },
         {
             "begin": "(```|~~~)\\s*(postgresql|postgres|pgsql)\\s*$",
             "captures": {
@@ -623,128 +641,128 @@
             ]
         },
         {
-            "begin": "(```|~~~)\\s*(styl)\\s*$", 
+            "begin": "(```|~~~)\\s*(styl)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.stylus"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(swig|liquid)\\s*$", 
+            "begin": "(```|~~~)\\s*(swig|liquid)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "text.html.swig"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(xml)\\s*$", 
+            "begin": "(```|~~~)\\s*(xml)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "text.xml"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(yaml)\\s*$", 
+            "begin": "(```|~~~)\\s*(yaml)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
-            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            },
+            "end": "(\\1)\\n",
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown",
             "patterns": [
                 {
                     "include": "source.yaml"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "(```|~~~)\\s*(\\w*)\\s*$", 
+            "begin": "(```|~~~)\\s*(\\w*)\\s*$",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.fenced.markdown"
-                }, 
+                },
                 "2": {
                     "name": "variable.language.fenced.markdown"
                 }
-            }, 
-            "end": "(\\1)\\n", 
+            },
+            "end": "(\\1)\\n",
             "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown"
-        }, 
+        },
         {
-            "begin": "^[ ]{0,3}([*+-])(?=\\s)", 
+            "begin": "^[ ]{0,3}([*+-])(?=\\s)",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.list_item.markdown"
                 }
-            }, 
-            "end": "^(?=\\S)", 
-            "name": "markup.list.unnumbered.markdown", 
+            },
+            "end": "^(?=\\S)",
+            "name": "markup.list.unnumbered.markdown",
             "patterns": [
                 {
                     "include": "#list-paragraph"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "^[ ]{0,3}([0-9]+)(\\.)(?=\\s)", 
+            "begin": "^[ ]{0,3}([0-9]+)(\\.)(?=\\s)",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.list_item.markdown punctuation.definition.list_item.number.markdown"
-                }, 
+                },
                 "2": {
                     "name": "punctuation.definition.list_item.markdown"
                 }
-            }, 
-            "end": "^(?=\\S)", 
-            "name": "markup.list.numbered.markdown", 
+            },
+            "end": "^(?=\\S)",
+            "name": "markup.list.numbered.markdown",
             "patterns": [
                 {
                     "include": "#list-paragraph"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "^(?=<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\\b)(?!.*?</\\1>)", 
-            "comment": "\n        Markdown formatting is disabled inside block-level tags.\n      ", 
-            "end": "(?<=^</\\1>$\\n)", 
-            "name": "meta.disable-markdown", 
+            "begin": "^(?=<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\\b)(?!.*?</\\1>)",
+            "comment": "\n        Markdown formatting is disabled inside block-level tags.\n      ",
+            "end": "(?<=^</\\1>$\\n)",
+            "name": "meta.disable-markdown",
             "patterns": [
                 {
                     "include": "text.html.basic"
@@ -753,143 +771,143 @@
                     "include": "text.html.handlebars"
                 }
             ]
-        }, 
+        },
         {
-            "begin": "^(?=<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\\b)", 
-            "comment": "Same rule but for one line disables.", 
-            "end": "$\\n?", 
-            "name": "meta.disable-markdown", 
+            "begin": "^(?=<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\\b)",
+            "comment": "Same rule but for one line disables.",
+            "end": "$\\n?",
+            "name": "meta.disable-markdown",
             "patterns": [
                 {
                     "include": "text.html.basic"
-                },            
+                },
                 {
                     "include": "text.html.handlebars"
                 }
             ]
-        }, 
+        },
         {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.constant.markdown"
-                }, 
+                },
                 "10": {
                     "name": "punctuation.definition.string.end.markdown"
-                }, 
+                },
                 "11": {
                     "name": "string.other.link.description.title.markdown"
-                }, 
+                },
                 "12": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "13": {
                     "name": "punctuation.definition.string.end.markdown"
-                }, 
+                },
                 "2": {
                     "name": "constant.other.reference.link.markdown"
-                }, 
+                },
                 "3": {
                     "name": "punctuation.definition.constant.markdown"
-                }, 
+                },
                 "4": {
                     "name": "punctuation.separator.key-value.markdown"
-                }, 
+                },
                 "5": {
                     "name": "punctuation.definition.link.markdown"
-                }, 
+                },
                 "6": {
                     "name": "markup.underline.link.markdown"
-                }, 
+                },
                 "7": {
                     "name": "punctuation.definition.link.markdown"
-                }, 
+                },
                 "8": {
                     "name": "string.other.link.description.title.markdown"
-                }, 
+                },
                 "9": {
                     "name": "punctuation.definition.string.begin.markdown"
                 }
-            }, 
-            "match": "(?x:\n        \\s*           # Leading whitespace\n        (\\[)(.+?)(\\])(:)    # Reference name\n        [ \\t]*          # Optional whitespace\n        (<?)(\\S+?)(>?)      # The url\n        [ \\t]*          # Optional whitespace\n        (?:\n            ((\\().+?(\\)))   # Match title in quotes\u2026\n          | ((\").+?(\"))   # or in parens.\n        )?            # Title is optional\n        \\s*           # Optional whitespace\n        $\n      )", 
+            },
+            "match": "(?x:\n        \\s*           # Leading whitespace\n        (\\[)(.+?)(\\])(:)    # Reference name\n        [ \\t]*          # Optional whitespace\n        (<?)(\\S+?)(>?)      # The url\n        [ \\t]*          # Optional whitespace\n        (?:\n            ((\\().+?(\\)))   # Match title in quotes\u2026\n          | ((\").+?(\"))   # or in parens.\n        )?            # Title is optional\n        \\s*           # Optional whitespace\n        $\n      )",
             "name": "meta.link.reference.def.markdown"
-        }, 
+        },
         {
-            "begin": "^(?=\\S)(?![=-]{3,}(?=$))", 
-            "end": "^(?:\\s*$|(?=[ ]{,3}>.))|(?=[ \\t]*\\n)(?<=^===|^====|=====|^---|^----|-----)[ \\t]*\\n|(?=^#)", 
-            "name": "meta.paragraph.markdown", 
+            "begin": "^(?=\\S)(?![=-]{3,}(?=$))",
+            "end": "^(?:\\s*$|(?=[ ]{,3}>.))|(?=[ \\t]*\\n)(?<=^===|^====|=====|^---|^----|-----)[ \\t]*\\n|(?=^#)",
+            "name": "meta.paragraph.markdown",
             "patterns": [
                 {
                     "include": "#inline"
-                }, 
+                },
                 {
                     "include": "text.html.handlebars"
-                }, 
+                },
                 {
                     "captures": {
                         "1": {
                             "name": "punctuation.definition.heading.markdown"
                         }
-                    }, 
-                    "match": "^(={3,})(?=[ \\t]*$)", 
+                    },
+                    "match": "^(={3,})(?=[ \\t]*$)",
                     "name": "markup.heading.1.markdown"
-                }, 
+                },
                 {
                     "captures": {
                         "1": {
                             "name": "punctuation.definition.heading.markdown"
                         }
-                    }, 
-                    "match": "^(-{3,})(?=[ \\t]*$)", 
+                    },
+                    "match": "^(-{3,})(?=[ \\t]*$)",
                     "name": "markup.heading.2.markdown"
                 }
             ]
         }
-    ], 
+    ],
     "repository": {
         "ampersand": {
-            "comment": "\n        Markdown will convert this for us. We match it so that the\n        HTML grammar will not mark it up as invalid.\n      ", 
-            "match": "&(?!([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);)", 
+            "comment": "\n        Markdown will convert this for us. We match it so that the\n        HTML grammar will not mark it up as invalid.\n      ",
+            "match": "&(?!([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);)",
             "name": "meta.other.valid-ampersand.markdown"
-        }, 
+        },
         "block_quote": {
-            "begin": "\\G[ ]{,3}(>)(?!$)[ ]?", 
+            "begin": "\\G[ ]{,3}(>)(?!$)[ ]?",
             "beginCaptures": {
                 "1": {
                     "name": "punctuation.definition.blockquote.markdown"
                 }
-            }, 
-            "comment": "\n        We terminate the block quote when seeing an empty line, a\n        separator or a line with leading > characters. The latter is\n        to \u201creset\u201d the quote level for quoted lines.\n      ", 
-            "end": "(?x)^\n        (?= \\s*$\n        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n        | [ ]{,3}>.\n        )", 
-            "name": "markup.quote.markdown", 
+            },
+            "comment": "\n        We terminate the block quote when seeing an empty line, a\n        separator or a line with leading > characters. The latter is\n        to \u201creset\u201d the quote level for quoted lines.\n      ",
+            "end": "(?x)^\n        (?= \\s*$\n        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n        | [ ]{,3}>.\n        )",
+            "name": "markup.quote.markdown",
             "patterns": [
                 {
-                    "begin": "(?x)\\G\n            (?= [ ]{,3}>.\n            )", 
-                    "end": "^", 
+                    "begin": "(?x)\\G\n            (?= [ ]{,3}>.\n            )",
+                    "end": "^",
                     "patterns": [
                         {
                             "include": "#block_quote"
                         }
                     ]
-                }, 
+                },
                 {
-                    "applyEndPatternLast": 1, 
-                    "begin": "(?x)\\G\n            (?= ([ ]{4}|\\t)\n            | [#]{1,6}\\s*+\n            | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n            )", 
-                    "end": "^", 
+                    "applyEndPatternLast": 1,
+                    "begin": "(?x)\\G\n            (?= ([ ]{4}|\\t)\n            | [#]{1,6}\\s*+\n            | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n            )",
+                    "end": "^",
                     "patterns": [
                         {
                             "include": "#block_raw"
-                        }, 
+                        },
                         {
                             "include": "#heading"
-                        }, 
+                        },
                         {
                             "include": "#separator"
                         }
                     ]
-                }, 
+                },
                 {
-                    "begin": "(?x)\\G\n            (?! $\n            | [ ]{,3}>.\n            | ([ ]{4}|\\t)\n            | [#]{1,6}\\s*+\n            | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n            )", 
-                    "end": "$|(?<=\\n)", 
+                    "begin": "(?x)\\G\n            (?! $\n            | [ ]{,3}>.\n            | ([ ]{4}|\\t)\n            | [#]{1,6}\\s*+\n            | [ ]{,3}(?<marker>[-*_])([ ]{,2}\\k<marker>){2,}[ \\t]*+$\n            )",
+                    "end": "$|(?<=\\n)",
                     "patterns": [
                         {
                             "include": "#inline"
@@ -897,409 +915,409 @@
                     ]
                 }
             ]
-        }, 
+        },
         "block_raw": {
-            "match": "\\G([ ]{4}|\\t).*$\\n?", 
+            "match": "\\G([ ]{4}|\\t).*$\\n?",
             "name": "markup.raw.block.markdown"
-        }, 
+        },
         "bold": {
-            "begin": "(?x)\n            (\\*\\*|__)(?=\\S)               # Open\n            (?=\n              (\n                  <[^>]*+>             # HTML tags\n                | (?<raw>`+)([^`]|(?!(?<!`)\\k<raw>(?!`))`)*+\\k<raw>\n                                  # Raw\n                | \\\\[\\\\`*_{}\\[\\]()#.!+\\->]?+     # Escapes\n                | \\[\n                (\n                        (?<square>          # Named group\n                      [^\\[\\]\\\\]       # Match most chars\n                          | \\\\.           # Escaped chars\n                          | \\[ \\g<square>*+ \\]    # Nested brackets\n                        )*+\n                  \\]\n                  (\n                    (             # Reference Link\n                      [ ]?          # Optional space\n                      \\[[^\\]]*+\\]       # Ref name\n                    )\n                    | (             # Inline Link\n                      \\(            # Opening paren\n                        [ \\t]*+       # Optional whtiespace\n                        <?(.*?)>?     # URL\n                        [ \\t]*+       # Optional whtiespace\n                        (         # Optional Title\n                          (?<title>['\"])\n                          (.*?)\n                          \\k<title>\n                        )?\n                      \\)\n                    )\n                  )\n                )\n                | (?!(?<=\\S)\\1).           # Everything besides\n                                  # style closer\n              )++\n              (?<=\\S)\\1                # Close\n            )\n      ", 
+            "begin": "(?x)\n            (\\*\\*|__)(?=\\S)               # Open\n            (?=\n              (\n                  <[^>]*+>             # HTML tags\n                | (?<raw>`+)([^`]|(?!(?<!`)\\k<raw>(?!`))`)*+\\k<raw>\n                                  # Raw\n                | \\\\[\\\\`*_{}\\[\\]()#.!+\\->]?+     # Escapes\n                | \\[\n                (\n                        (?<square>          # Named group\n                      [^\\[\\]\\\\]       # Match most chars\n                          | \\\\.           # Escaped chars\n                          | \\[ \\g<square>*+ \\]    # Nested brackets\n                        )*+\n                  \\]\n                  (\n                    (             # Reference Link\n                      [ ]?          # Optional space\n                      \\[[^\\]]*+\\]       # Ref name\n                    )\n                    | (             # Inline Link\n                      \\(            # Opening paren\n                        [ \\t]*+       # Optional whtiespace\n                        <?(.*?)>?     # URL\n                        [ \\t]*+       # Optional whtiespace\n                        (         # Optional Title\n                          (?<title>['\"])\n                          (.*?)\n                          \\k<title>\n                        )?\n                      \\)\n                    )\n                  )\n                )\n                | (?!(?<=\\S)\\1).           # Everything besides\n                                  # style closer\n              )++\n              (?<=\\S)\\1                # Close\n            )\n      ",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.bold.markdown"
                 }
-            }, 
-            "end": "(?<=\\S)(\\1)", 
-            "name": "markup.bold.markdown", 
+            },
+            "end": "(?<=\\S)(\\1)",
+            "name": "markup.bold.markdown",
             "patterns": [
                 {
-                    "applyEndPatternLast": 1, 
-                    "begin": "(?=<[^>]*?>)", 
-                    "end": "(?<=>)", 
+                    "applyEndPatternLast": 1,
+                    "begin": "(?=<[^>]*?>)",
+                    "end": "(?<=>)",
                     "patterns": [
                         {
                             "include": "text.html.handlebars"
                         }
                     ]
-                }, 
+                },
                 {
                     "include": "#escape"
-                }, 
+                },
                 {
                     "include": "#ampersand"
-                }, 
+                },
                 {
                     "include": "#bracket"
-                }, 
+                },
                 {
                     "include": "#raw"
-                }, 
+                },
                 {
                     "include": "#italic"
-                }, 
+                },
                 {
                     "include": "#image-inline"
-                }, 
+                },
                 {
                     "include": "#link-inline"
-                }, 
+                },
                 {
                     "include": "#link-inet"
-                }, 
+                },
                 {
                     "include": "#link-email"
-                }, 
+                },
                 {
                     "include": "#image-ref"
-                }, 
+                },
                 {
                     "include": "#link-ref-literal"
-                }, 
+                },
                 {
                     "include": "#link-ref"
                 }
             ]
-        }, 
+        },
         "bracket": {
-            "comment": "\n        Markdown will convert this for us. We match it so that the\n        HTML grammar will not mark it up as invalid.\n      ", 
-            "match": "<(?![a-z/?\\$!])", 
+            "comment": "\n        Markdown will convert this for us. We match it so that the\n        HTML grammar will not mark it up as invalid.\n      ",
+            "match": "<(?![a-z/?\\$!])",
             "name": "meta.other.valid-bracket.markdown"
-        }, 
+        },
         "escape": {
-            "match": "\\\\[-`*_#+.!(){}\\[\\]\\\\>]", 
+            "match": "\\\\[-`*_#+.!(){}\\[\\]\\\\>]",
             "name": "constant.character.escape.markdown"
-        }, 
+        },
         "heading": {
-            "begin": "\\G(#{1,6})(?!#)\\s*(?=\\S)", 
+            "begin": "\\G(#{1,6})(?!#)\\s*(?=\\S)",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.heading.markdown"
                 }
-            }, 
-            "contentName": "entity.name.section.markdown", 
-            "end": "\\s*(#*)$\\n?", 
-            "name": "markup.heading.markdown", 
+            },
+            "contentName": "entity.name.section.markdown",
+            "end": "\\s*(#*)$\\n?",
+            "name": "markup.heading.markdown",
             "patterns": [
                 {
                     "include": "#inline"
                 }
             ]
-        }, 
+        },
         "image-inline": {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "10": {
                     "name": "string.other.link.description.title.markdown"
-                }, 
+                },
                 "11": {
                     "name": "punctuation.definition.string.markdown"
-                }, 
+                },
                 "12": {
                     "name": "punctuation.definition.string.markdown"
-                }, 
+                },
                 "13": {
                     "name": "string.other.link.description.title.markdown"
-                }, 
+                },
                 "14": {
                     "name": "punctuation.definition.string.markdown"
-                }, 
+                },
                 "15": {
                     "name": "punctuation.definition.string.markdown"
-                }, 
+                },
                 "16": {
                     "name": "punctuation.definition.metadata.markdown"
-                }, 
+                },
                 "2": {
                     "name": "string.other.link.description.markdown"
-                }, 
+                },
                 "4": {
                     "name": "punctuation.definition.string.end.markdown"
-                }, 
+                },
                 "5": {
                     "name": "invalid.illegal.whitespace.markdown"
-                }, 
+                },
                 "6": {
                     "name": "punctuation.definition.metadata.markdown"
-                }, 
+                },
                 "7": {
                     "name": "punctuation.definition.link.markdown"
-                }, 
+                },
                 "8": {
                     "name": "markup.underline.link.image.markdown"
-                }, 
+                },
                 "9": {
                     "name": "punctuation.definition.link.markdown"
                 }
-            }, 
-            "match": "(?x:\n        \\!              # Images start with !\n        (\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])\n                      # Match the link text.\n        ([ ])?            # Space not allowed\n        (\\()            # Opening paren for url\n          (<?)(\\S+?)(>?)      # The url\n          [ \\t]*          # Optional whitespace\n          (?:\n              ((\\().+?(\\)))   # Match title in parens\u2026\n            | ((\").+?(\"))   # or in quotes.\n          )?            # Title is optional\n          \\s*           # Optional whitespace\n        (\\))\n       )", 
+            },
+            "match": "(?x:\n        \\!              # Images start with !\n        (\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])\n                      # Match the link text.\n        ([ ])?            # Space not allowed\n        (\\()            # Opening paren for url\n          (<?)(\\S+?)(>?)      # The url\n          [ \\t]*          # Optional whitespace\n          (?:\n              ((\\().+?(\\)))   # Match title in parens\u2026\n            | ((\").+?(\"))   # or in quotes.\n          )?            # Title is optional\n          \\s*           # Optional whitespace\n        (\\))\n       )",
             "name": "meta.image.inline.markdown"
-        }, 
+        },
         "image-ref": {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "2": {
                     "name": "string.other.link.description.markdown"
-                }, 
+                },
                 "4": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "5": {
                     "name": "punctuation.definition.constant.markdown"
-                }, 
+                },
                 "6": {
                     "name": "constant.other.reference.link.markdown"
-                }, 
+                },
                 "7": {
                     "name": "punctuation.definition.constant.markdown"
                 }
-            }, 
-            "match": "\\!(\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])[ ]?(\\[)(.*?)(\\])", 
+            },
+            "match": "\\!(\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])[ ]?(\\[)(.*?)(\\])",
             "name": "meta.image.reference.markdown"
-        }, 
+        },
         "inline": {
             "patterns": [
                 {
                     "include": "#escape"
-                }, 
+                },
                 {
                     "include": "#ampersand"
-                }, 
+                },
                 {
                     "include": "#bracket"
-                }, 
+                },
                 {
                     "include": "#raw"
-                }, 
+                },
                 {
                     "include": "#bold"
-                }, 
+                },
                 {
                     "include": "#italic"
-                }, 
+                },
                 {
                     "include": "#line-break"
-                }, 
+                },
                 {
                     "include": "#image-inline"
-                }, 
+                },
                 {
                     "include": "#link-inline"
-                }, 
+                },
                 {
                     "include": "#link-inet"
-                }, 
+                },
                 {
                     "include": "#link-email"
-                }, 
+                },
                 {
                     "include": "#image-ref"
-                }, 
+                },
                 {
                     "include": "#link-ref-literal"
-                }, 
+                },
                 {
                     "include": "#link-ref"
                 }
             ]
-        }, 
+        },
         "italic": {
-            "begin": "(?x)\n            (\\*|_)(?=\\S)                         # Open\n            (?=\n              (\n                  <[^>]*+>              # HTML tags\n                | (?<raw>`+)([^`]|(?!(?<!`)\\k<raw>(?!`))`)*+\\k<raw>\n                                                 # Raw\n                | \\\\[\\\\`*_{}\\[\\]()#.!+\\->]?+  # Escapes\n                | \\[\n                (\n                        (?<square>         # Named group\n                      [^\\[\\]\\\\]                  # Match most chars\n                          | \\\\.                  # Escaped chars\n                          | \\[ \\g<square>*+ \\]  # Nested brackets\n                        )*+\n                  \\]\n                  (\n                    (                            # Reference Link\n                      [ ]?                       # Optional space\n                      \\[[^\\]]*+\\]                # Ref name\n                    )\n                    | (                          # Inline Link\n                      \\(                         # Opening paren\n                        [ \\t]*+                  # Optional whtiespace\n                        <?(.*?)>?          # URL\n                        [ \\t]*+                  # Optional whtiespace\n                        (                        # Optional Title\n                          (?<title>['\"])\n                          (.*?)\n                          \\k<title>\n                        )?\n                      \\)\n                    )\n                  )\n                )\n                | \\1\\1                        # Must be bold closer\n                | (?!(?<=\\S)\\1).           # Everything besides\n                                              # style closer\n              )++\n              (?<=\\S)\\1                    # Close\n            )\n          ", 
+            "begin": "(?x)\n            (\\*|_)(?=\\S)                         # Open\n            (?=\n              (\n                  <[^>]*+>              # HTML tags\n                | (?<raw>`+)([^`]|(?!(?<!`)\\k<raw>(?!`))`)*+\\k<raw>\n                                                 # Raw\n                | \\\\[\\\\`*_{}\\[\\]()#.!+\\->]?+  # Escapes\n                | \\[\n                (\n                        (?<square>         # Named group\n                      [^\\[\\]\\\\]                  # Match most chars\n                          | \\\\.                  # Escaped chars\n                          | \\[ \\g<square>*+ \\]  # Nested brackets\n                        )*+\n                  \\]\n                  (\n                    (                            # Reference Link\n                      [ ]?                       # Optional space\n                      \\[[^\\]]*+\\]                # Ref name\n                    )\n                    | (                          # Inline Link\n                      \\(                         # Opening paren\n                        [ \\t]*+                  # Optional whtiespace\n                        <?(.*?)>?          # URL\n                        [ \\t]*+                  # Optional whtiespace\n                        (                        # Optional Title\n                          (?<title>['\"])\n                          (.*?)\n                          \\k<title>\n                        )?\n                      \\)\n                    )\n                  )\n                )\n                | \\1\\1                        # Must be bold closer\n                | (?!(?<=\\S)\\1).           # Everything besides\n                                              # style closer\n              )++\n              (?<=\\S)\\1                    # Close\n            )\n          ",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.italic.markdown"
                 }
-            }, 
-            "end": "(?<=\\S)(\\1)((?!\\1)|(?=\\1\\1))(?=[ \\r\\n\\t\\Z])", 
-            "name": "markup.italic.markdown", 
+            },
+            "end": "(?<=\\S)(\\1)((?!\\1)|(?=\\1\\1))(?=[ \\r\\n\\t\\Z])",
+            "name": "markup.italic.markdown",
             "patterns": [
                 {
-                    "applyEndPatternLast": 1, 
-                    "begin": "(?=<[^>]*?>)", 
-                    "end": "(?<=>)", 
+                    "applyEndPatternLast": 1,
+                    "begin": "(?=<[^>]*?>)",
+                    "end": "(?<=>)",
                     "patterns": [
                         {
                             "include": "text.html.handlebars"
                         }
                     ]
-                }, 
+                },
                 {
                     "include": "#escape"
-                }, 
+                },
                 {
                     "include": "#ampersand"
-                }, 
+                },
                 {
                     "include": "#bracket"
-                }, 
+                },
                 {
                     "include": "#raw"
-                }, 
+                },
                 {
                     "include": "#bold"
-                }, 
+                },
                 {
                     "include": "#image-inline"
-                }, 
+                },
                 {
                     "include": "#link-inline"
-                }, 
+                },
                 {
                     "include": "#link-inet"
-                }, 
+                },
                 {
                     "include": "#link-email"
-                }, 
+                },
                 {
                     "include": "#image-ref"
-                }, 
+                },
                 {
                     "include": "#link-ref-literal"
-                }, 
+                },
                 {
                     "include": "#link-ref"
                 }
             ]
-        }, 
+        },
         "line-break": {
-            "match": " {2,}$", 
+            "match": " {2,}$",
             "name": "meta.dummy.line-break"
-        }, 
+        },
         "link-email": {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.link.markdown"
-                }, 
+                },
                 "2": {
                     "name": "markup.underline.link.markdown"
-                }, 
+                },
                 "4": {
                     "name": "punctuation.definition.link.markdown"
                 }
-            }, 
-            "match": "(<)((?:mailto:)?[-.\\w]+@[-a-z0-9]+(\\.[-a-z0-9]+)*\\.[a-z]+)(>)", 
+            },
+            "match": "(<)((?:mailto:)?[-.\\w]+@[-a-z0-9]+(\\.[-a-z0-9]+)*\\.[a-z]+)(>)",
             "name": "meta.link.email.lt-gt.markdown"
-        }, 
+        },
         "link-inet": {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.link.markdown"
-                }, 
+                },
                 "2": {
                     "name": "markup.underline.link.markdown"
-                }, 
+                },
                 "3": {
                     "name": "punctuation.definition.link.markdown"
                 }
-            }, 
-            "match": "(<)((?:https?|ftp)://.*?)(>)", 
+            },
+            "match": "(<)((?:https?|ftp)://.*?)(>)",
             "name": "meta.link.inet.markdown"
-        }, 
+        },
         "link-inline": {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "10": {
                     "name": "string.other.link.description.title.markdown"
-                }, 
+                },
                 "11": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "12": {
                     "name": "punctuation.definition.string.end.markdown"
-                }, 
+                },
                 "13": {
                     "name": "string.other.link.description.title.markdown"
-                }, 
+                },
                 "14": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "15": {
                     "name": "punctuation.definition.string.end.markdown"
-                }, 
+                },
                 "16": {
                     "name": "punctuation.definition.metadata.markdown"
-                }, 
+                },
                 "2": {
                     "name": "string.other.link.title.markdown"
-                }, 
+                },
                 "4": {
                     "name": "punctuation.definition.string.end.markdown"
-                }, 
+                },
                 "5": {
                     "name": "invalid.illegal.whitespace.markdown"
-                }, 
+                },
                 "6": {
                     "name": "punctuation.definition.metadata.markdown"
-                }, 
+                },
                 "7": {
                     "name": "punctuation.definition.link.markdown"
-                }, 
+                },
                 "8": {
                     "name": "markup.underline.link.markdown"
-                }, 
+                },
                 "9": {
                     "name": "punctuation.definition.link.markdown"
                 }
-            }, 
-            "match": "(?x:\n        (\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])\n                      # Match the link text.\n        ([ ])?            # Space not allowed\n        (\\()            # Opening paren for url\n          (<?)(.*?)(>?)     # The url\n          [ \\t]*          # Optional whitespace\n          (?:\n              ((\\().+?(\\)))   # Match title in parens\u2026\n            | ((\").+?(\"))   # or in quotes.\n          )?            # Title is optional\n          \\s*           # Optional whitespace\n        (\\))\n       )", 
+            },
+            "match": "(?x:\n        (\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])\n                      # Match the link text.\n        ([ ])?            # Space not allowed\n        (\\()            # Opening paren for url\n          (<?)(.*?)(>?)     # The url\n          [ \\t]*          # Optional whitespace\n          (?:\n              ((\\().+?(\\)))   # Match title in parens\u2026\n            | ((\").+?(\"))   # or in quotes.\n          )?            # Title is optional\n          \\s*           # Optional whitespace\n        (\\))\n       )",
             "name": "meta.link.inline.markdown"
-        }, 
+        },
         "link-ref": {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "2": {
                     "name": "string.other.link.title.markdown"
-                }, 
+                },
                 "4": {
                     "name": "punctuation.definition.string.end.markdown"
-                }, 
+                },
                 "5": {
                     "name": "punctuation.definition.constant.begin.markdown"
-                }, 
+                },
                 "6": {
                     "name": "constant.other.reference.link.markdown"
-                }, 
+                },
                 "7": {
                     "name": "punctuation.definition.constant.end.markdown"
                 }
-            }, 
-            "match": "(\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])[ ]?(\\[)([^\\]]*+)(\\])", 
+            },
+            "match": "(\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])[ ]?(\\[)([^\\]]*+)(\\])",
             "name": "meta.link.reference.markdown"
-        }, 
+        },
         "link-ref-literal": {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.string.begin.markdown"
-                }, 
+                },
                 "2": {
                     "name": "string.other.link.title.markdown"
-                }, 
+                },
                 "4": {
                     "name": "punctuation.definition.string.end.markdown"
-                }, 
+                },
                 "5": {
                     "name": "punctuation.definition.constant.begin.markdown"
-                }, 
+                },
                 "6": {
                     "name": "punctuation.definition.constant.end.markdown"
                 }
-            }, 
-            "match": "(\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])[ ]?(\\[)(\\])", 
+            },
+            "match": "(\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])[ ]?(\\[)(\\])",
             "name": "meta.link.reference.literal.markdown"
-        }, 
+        },
         "list-paragraph": {
             "patterns": [
                 {
-                    "begin": "\\G\\s+(?=\\S)", 
-                    "end": "^\\s*$", 
-                    "name": "meta.paragraph.list.markdown", 
+                    "begin": "\\G\\s+(?=\\S)",
+                    "end": "^\\s*$",
+                    "name": "meta.paragraph.list.markdown",
                     "patterns": [
                         {
                             "include": "#inline"
@@ -1307,24 +1325,24 @@
                     ]
                 }
             ]
-        }, 
+        },
         "raw": {
             "captures": {
                 "1": {
                     "name": "punctuation.definition.raw.markdown"
-                }, 
+                },
                 "3": {
                     "name": "punctuation.definition.raw.markdown"
                 }
-            }, 
-            "match": "(`+)([^`]|(?!(?<!`)\\1(?!`))`)*+(\\1)", 
+            },
+            "match": "(`+)([^`]|(?!(?<!`)\\1(?!`))`)*+(\\1)",
             "name": "markup.raw.inline.markdown"
-        }, 
+        },
         "separator": {
-            "match": "\\G[ ]{,3}([-*_])([ ]{,2}\\1){2,}[ \\t]*$\\n?", 
+            "match": "\\G[ ]{,3}([-*_])([ ]{,2}\\1){2,}[ \\t]*$\\n?",
             "name": "meta.separator.markdown"
         }
-    }, 
-    "scopeName": "text.html.markdown", 
+    },
+    "scopeName": "text.html.markdown",
     "uuid": "dd477cf1-34c4-49d2-ba09-f8445676ccd4"
 }
