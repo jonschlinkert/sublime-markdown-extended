@@ -231,7 +231,7 @@ See [gray-matter](https://github.com/assemble/gray-matter)
 
 
 ## Copyright and license
-Copyright 2013 Jon Schlinkert
+Copyright 2013-2015 Jon Schlinkert
 
 [MIT License](LICENSE-MIT)
 
