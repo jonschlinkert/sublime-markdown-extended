@@ -1,0 +1,862 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+name: Markdown Extended
+scopeName: text.html.markdown
+fileTypes: [mdown, markdown, markdn, md.hbs, md]
+uuid: dd477cf1-34c4-49d2-ba09-f8445676ccd4
+
+patterns:
+- name: markup.raw.yaml.front-matter
+  begin: (?<!\s)---\n$
+  end: ^---\s
+  patterns:
+  - include: source.yaml
+
+- name: markup.raw.coffee.front-matter
+  begin: (?<!\s)---\s*coffee\n$
+  end: ^---\s
+  patterns:
+  - include: source.coffee
+
+- name: markup.raw.json.front-matter
+  begin: (?<!\s)---\s*json\n$
+  end: ^---\s
+  patterns:
+  - include: source.json
+
+- comment: "\n        We could also use an empty end match and set\n        applyEndPatternLast,\
+    \ but then we must be sure that the begin\n        pattern will only match stuff\
+    \ matched by the sub-patterns.\n      "
+  name: meta.block-level.markdown
+  begin: |-
+    (?x)^
+    (?= [ ]{,3}>.
+    | ([ ]{4}|\t)(?!$)
+    | [#]{1,6}\s*+
+    | [ ]{,3}(?<marker>[-*_])([ ]{,2}\k<marker>){2,}[ \t]*+$
+    )
+  end: |-
+    (?x)^
+    (?! [ ]{,3}>.
+    | ([ ]{4}|\t)
+    | [#]{1,6}\s*+
+    | [ ]{,3}(?<marker>[-*_])([ ]{,2}\k<marker>){2,}[ \t]*+$
+    )
+  patterns:
+  - include: '#block_quote'
+  - include: '#block_raw'
+  - include: '#heading'
+  - include: '#separator'
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(c)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.c
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(cpp)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.c++
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(coffee|coffeescript)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.coffee
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(jade)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.jade
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(css)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.css
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(csharp)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.cs
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(ejs|underscore|lodash)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.ejs
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(diff)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.diff
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(go|golang)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.go
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(hbs|handlebars|html|html5)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: text.html.basic
+  - include: text.html.handlebars
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(java)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.java
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(javascript|js)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.js
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(json)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.json
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|{%\s*highlight)\s*(julia|jl)\s*((?:linenos\s*)?%})?$
+  end: (```|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.julia
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|{%\s*highlight)\s*(less)\s*((?:linenos\s*)?%})?$
+  end: (```|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.css.less
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(ls|livescript|LiveScript)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.livescript
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(lua)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.lua
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(md|markdown)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: text.html.markdown
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(swift)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.swift
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(obj(?:ective\-|)c)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.objc
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(obj(?:ective\-|)c\+\+)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.objc++
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(perl)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.perl
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(php)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.php
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(python)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.python
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~)\s*\{?\s*(r)(?:[ \}].*$|\}?$)
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.r
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(ruby)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.ruby
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(rust)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.rust
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(sass)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.sass
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(scala)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.scala
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(scss)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.scss
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(sh|shell|bash)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.shell
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(sql|mysql|ddl|dml)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.sql
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(postgresql|postgres|pgsql)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.pgsql
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(styl)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.stylus
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(swig|liquid)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: text.html.swig
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(xml)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: text.xml
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(yaml)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.yaml
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(\w*)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+
+- name: markup.list.unnumbered.markdown
+  begin: ^[ ]{0,3}([*+-])(?=\s)
+  end: ^(?=\S)
+  captures:
+    '1': {name: punctuation.definition.list_item.markdown}
+  patterns:
+  - include: '#list-paragraph'
+
+- name: markup.list.numbered.markdown
+  begin: ^[ ]{0,3}([0-9]+)(\.)(?=\s)
+  end: ^(?=\S)
+  captures:
+    '1': {name: punctuation.definition.list_item.markdown punctuation.definition.list_item.number.markdown}
+    '2': {name: punctuation.definition.list_item.markdown}
+  patterns:
+  - include: '#list-paragraph'
+
+- comment: "\n        Markdown formatting is disabled inside block-level tags.\n \
+    \     "
+  name: meta.disable-markdown
+  begin: ^(?=<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\b)(?!.*?</\1>)
+  end: (?<=^</\1>$\n)
+  patterns:
+  - include: text.html.basic
+  - include: text.html.handlebars
+
+- comment: Same rule but for one line disables.
+  name: meta.disable-markdown
+  begin: ^(?=<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\b)
+  end: $\n?
+  patterns:
+  - include: text.html.basic
+  - include: text.html.handlebars
+
+- name: meta.link.reference.def.markdown
+  match: "(?x:\n        \\s*           # Leading whitespace\n        (\\[)(.+?)(\\\
+    ])(:)    # Reference name\n        [ \\t]*          # Optional whitespace\n  \
+    \      (<?)(\\S+?)(>?)      # The url\n        [ \\t]*          # Optional whitespace\n\
+    \        (?:\n            ((\\().+?(\\)))   # Match title in quotes\u2026\n  \
+    \        | ((\").+?(\"))   # or in parens.\n        )?            # Title is optional\n\
+    \        \\s*           # Optional whitespace\n        $\n      )"
+  captures:
+    '1': {name: punctuation.definition.constant.markdown}
+    '2': {name: constant.other.reference.link.markdown}
+    '3': {name: punctuation.definition.constant.markdown}
+    '4': {name: punctuation.separator.key-value.markdown}
+    '5': {name: punctuation.definition.link.markdown}
+    '6': {name: markup.underline.link.markdown}
+    '7': {name: punctuation.definition.link.markdown}
+    '8': {name: string.other.link.description.title.markdown}
+    '9': {name: punctuation.definition.string.begin.markdown}
+    '10': {name: punctuation.definition.string.end.markdown}
+    '11': {name: string.other.link.description.title.markdown}
+    '12': {name: punctuation.definition.string.begin.markdown}
+    '13': {name: punctuation.definition.string.end.markdown}
+
+- name: meta.paragraph.markdown
+  begin: ^(?=\S)(?![=-]{3,}(?=$))
+  end: ^(?:\s*$|(?=[ ]{,3}>.))|(?=[ \t]*\n)(?<=^===|^====|=====|^---|^----|-----)[
+    \t]*\n|(?=^#)
+  patterns:
+  - include: '#inline'
+  - include: text.html.handlebars
+  - name: markup.heading.1.markdown
+    match: ^(={3,})(?=[ \t]*$)
+    captures:
+      '1': {name: punctuation.definition.heading.markdown}
+  - name: markup.heading.2.markdown
+    match: ^(-{3,})(?=[ \t]*$)
+    captures:
+      '1': {name: punctuation.definition.heading.markdown}
+
+repository:
+  ampersand:
+    comment: "\n        Markdown will convert this for us. We match it so that the\n\
+      \        HTML grammar will not mark it up as invalid.\n      "
+    name: meta.other.valid-ampersand.markdown
+    match: '&(?!([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);)'
+
+  block_quote:
+    comment: "\n        We terminate the block quote when seeing an empty line, a\n\
+      \        separator or a line with leading > characters. The latter is\n    \
+      \    to \u201Creset\u201D the quote level for quoted lines.\n      "
+    name: markup.quote.markdown
+    begin: \G[ ]{,3}(>)(?!$)[ ]?
+    beginCaptures:
+      '1': {name: punctuation.definition.blockquote.markdown}
+    end: |-
+      (?x)^
+      (?= \s*$
+      | [ ]{,3}(?<marker>[-*_])([ ]{,2}\k<marker>){2,}[ \t]*+$
+      | [ ]{,3}>.
+      )
+    patterns:
+    - begin: |-
+        (?x)\G
+        (?= [ ]{,3}>.
+        )
+      end: ^
+      patterns:
+      - include: '#block_quote'
+    - begin: |-
+        (?x)\G
+        (?= ([ ]{4}|\t)
+        | [#]{1,6}\s*+
+        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\k<marker>){2,}[ \t]*+$
+        )
+      end: ^
+      patterns:
+      - include: '#block_raw'
+      - include: '#heading'
+      - include: '#separator'
+      applyEndPatternLast: 1
+    - begin: |-
+        (?x)\G
+        (?! $
+        | [ ]{,3}>.
+        | ([ ]{4}|\t)
+        | [#]{1,6}\s*+
+        | [ ]{,3}(?<marker>[-*_])([ ]{,2}\k<marker>){2,}[ \t]*+$
+        )
+      end: $|(?<=\n)
+      patterns:
+      - include: '#inline'
+
+  block_raw:
+    name: markup.raw.block.markdown
+    match: \G([ ]{4}|\t).*$\n?
+
+  bold:
+    name: markup.bold.markdown
+    begin: |-
+      (?x)
+      (\*\*|__)(?=\S)               # Open
+      (?=
+        (
+            <[^>]*+>             # HTML tags
+          | (?<raw>`+)([^`]|(?!(?<!`)\k<raw>(?!`))`)*+\k<raw>
+                            # Raw
+          | \\[\\`*_{}\[\]()#.!+\->]?+     # Escapes
+          | \[
+          (
+                  (?<square>          # Named group
+                [^\[\]\\]       # Match most chars
+                    | \\.           # Escaped chars
+                    | \[ \g<square>*+ \]    # Nested brackets
+                  )*+
+            \]
+            (
+              (             # Reference Link
+                [ ]?          # Optional space
+                \[[^\]]*+\]       # Ref name
+              )
+              | (             # Inline Link
+                \(            # Opening paren
+                  [ \t]*+       # Optional whtiespace
+                  <?(.*?)>?     # URL
+                  [ \t]*+       # Optional whtiespace
+                  (         # Optional Title
+                    (?<title>['"])
+                    (.*?)
+                    \k<title>
+                  )?
+                \)
+              )
+            )
+          )
+          | (?!(?<=\S)\1).           # Everything besides
+                            # style closer
+        )++
+        (?<=\S)\1                # Close
+      )
+    end: (?<=\S)(\1)
+    captures:
+      '1': {name: punctuation.definition.bold.markdown}
+    patterns:
+    - begin: (?=<[^>]*?>)
+      end: (?<=>)
+      patterns:
+      - include: text.html.handlebars
+      applyEndPatternLast: 1
+    - include: '#escape'
+    - include: '#ampersand'
+    - include: '#bracket'
+    - include: '#raw'
+    - include: '#italic'
+    - include: '#image-inline'
+    - include: '#link-inline'
+    - include: '#link-inet'
+    - include: '#link-email'
+    - include: '#image-ref'
+    - include: '#link-ref-literal'
+    - include: '#link-ref'
+
+  bracket:
+    comment: "\n        Markdown will convert this for us. We match it so that the\n\
+      \        HTML grammar will not mark it up as invalid.\n      "
+    name: meta.other.valid-bracket.markdown
+    match: <(?![a-z/?\$!])
+
+  escape:
+    name: constant.character.escape.markdown
+    match: \\[-`*_#+.!(){}\[\]\\>]
+
+  heading:
+    name: markup.heading.markdown
+    contentName: entity.name.section.markdown
+    begin: \G(#{1,6})(?!#)\s*(?=\S)
+    end: \s*(#*)$\n?
+    captures:
+      '1': {name: punctuation.definition.heading.markdown}
+    patterns:
+    - include: '#inline'
+
+  image-inline:
+    name: meta.image.inline.markdown
+    match: "(?x:\n        \\!              # Images start with !\n        (\\[)((?<square>[^\\\
+      [\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\])\n                      # Match\
+      \ the link text.\n        ([ ])?            # Space not allowed\n        (\\\
+      ()            # Opening paren for url\n          (<?)(\\S+?)(>?)      # The\
+      \ url\n          [ \\t]*          # Optional whitespace\n          (?:\n   \
+      \           ((\\().+?(\\)))   # Match title in parens\u2026\n            | ((\"\
+      ).+?(\"))   # or in quotes.\n          )?            # Title is optional\n \
+      \         \\s*           # Optional whitespace\n        (\\))\n       )"
+    captures:
+      '1': {name: punctuation.definition.string.begin.markdown}
+      '2': {name: string.other.link.description.markdown}
+      '4': {name: punctuation.definition.string.end.markdown}
+      '5': {name: invalid.illegal.whitespace.markdown}
+      '6': {name: punctuation.definition.metadata.markdown}
+      '7': {name: punctuation.definition.link.markdown}
+      '8': {name: markup.underline.link.image.markdown}
+      '9': {name: punctuation.definition.link.markdown}
+      '10': {name: string.other.link.description.title.markdown}
+      '11': {name: punctuation.definition.string.markdown}
+      '12': {name: punctuation.definition.string.markdown}
+      '13': {name: string.other.link.description.title.markdown}
+      '14': {name: punctuation.definition.string.markdown}
+      '15': {name: punctuation.definition.string.markdown}
+      '16': {name: punctuation.definition.metadata.markdown}
+
+  image-ref:
+    name: meta.image.reference.markdown
+    match: \!(\[)((?<square>[^\[\]\\]|\\.|\[\g<square>*+\])*+)(\])[ ]?(\[)(.*?)(\])
+    captures:
+      '1': {name: punctuation.definition.string.begin.markdown}
+      '2': {name: string.other.link.description.markdown}
+      '4': {name: punctuation.definition.string.begin.markdown}
+      '5': {name: punctuation.definition.constant.markdown}
+      '6': {name: constant.other.reference.link.markdown}
+      '7': {name: punctuation.definition.constant.markdown}
+
+  inline:
+    patterns:
+    - include: '#escape'
+    - include: '#ampersand'
+    - include: '#bracket'
+    - include: '#raw'
+    - include: '#bold'
+    - include: '#italic'
+    - include: '#line-break'
+    - include: '#image-inline'
+    - include: '#link-inline'
+    - include: '#link-inet'
+    - include: '#link-email'
+    - include: '#image-ref'
+    - include: '#link-ref-literal'
+    - include: '#link-ref'
+
+  italic:
+    name: markup.italic.markdown
+    begin: |-
+      (?x)
+      (\*|_)(?=\S)                         # Open
+      (?=
+        (
+            <[^>]*+>              # HTML tags
+          | (?<raw>`+)([^`]|(?!(?<!`)\k<raw>(?!`))`)*+\k<raw>
+                                           # Raw
+          | \\[\\`*_{}\[\]()#.!+\->]?+  # Escapes
+          | \[
+          (
+                  (?<square>         # Named group
+                [^\[\]\\]                  # Match most chars
+                    | \\.                  # Escaped chars
+                    | \[ \g<square>*+ \]  # Nested brackets
+                  )*+
+            \]
+            (
+              (                            # Reference Link
+                [ ]?                       # Optional space
+                \[[^\]]*+\]                # Ref name
+              )
+              | (                          # Inline Link
+                \(                         # Opening paren
+                  [ \t]*+                  # Optional whtiespace
+                  <?(.*?)>?          # URL
+                  [ \t]*+                  # Optional whtiespace
+                  (                        # Optional Title
+                    (?<title>['"])
+                    (.*?)
+                    \k<title>
+                  )?
+                \)
+              )
+            )
+          )
+          | \1\1                        # Must be bold closer
+          | (?!(?<=\S)\1).           # Everything besides
+                                        # style closer
+        )++
+        (?<=\S)\1                    # Close
+      )
+    end: (?<=\S)(\1)((?!\1)|(?=\1\1))
+    captures:
+      '1': {name: punctuation.definition.italic.markdown}
+    patterns:
+    - begin: (?=<[^>]*?>)
+      end: (?<=>)
+      patterns:
+      - include: text.html.handlebars
+      applyEndPatternLast: 1
+    - include: '#escape'
+    - include: '#ampersand'
+    - include: '#bracket'
+    - include: '#raw'
+    - include: '#bold'
+    - include: '#image-inline'
+    - include: '#link-inline'
+    - include: '#link-inet'
+    - include: '#link-email'
+    - include: '#image-ref'
+    - include: '#link-ref-literal'
+    - include: '#link-ref'
+
+  line-break:
+    name: meta.dummy.line-break
+    match: ' {2,}$'
+
+  link-email:
+    name: meta.link.email.lt-gt.markdown
+    match: (<)((?:mailto:)?[-.\w]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)(>)
+    captures:
+      '1': {name: punctuation.definition.link.markdown}
+      '2': {name: markup.underline.link.markdown}
+      '4': {name: punctuation.definition.link.markdown}
+
+  link-inet:
+    name: meta.link.inet.markdown
+    match: (<)((?:https?|ftp)://.*?)(>)
+    captures:
+      '1': {name: punctuation.definition.link.markdown}
+      '2': {name: markup.underline.link.markdown}
+      '3': {name: punctuation.definition.link.markdown}
+
+  link-inline:
+    name: meta.link.inline.markdown
+    match: "(?x:\n        (\\[)((?<square>[^\\[\\]\\\\]|\\\\.|\\[\\g<square>*+\\])*+)(\\\
+      ])\n                      # Match the link text.\n        ([ ])?           \
+      \ # Space not allowed\n        (\\()            # Opening paren for url\n  \
+      \        (<?)(.*?)(>?)     # The url\n          [ \\t]*          # Optional\
+      \ whitespace\n          (?:\n              ((\\().+?(\\)))   # Match title in\
+      \ parens\u2026\n            | ((\").+?(\"))   # or in quotes.\n          )?\
+      \            # Title is optional\n          \\s*           # Optional whitespace\n\
+      \        (\\))\n       )"
+    captures:
+      '1': {name: punctuation.definition.string.begin.markdown}
+      '2': {name: string.other.link.title.markdown}
+      '4': {name: punctuation.definition.string.end.markdown}
+      '5': {name: invalid.illegal.whitespace.markdown}
+      '6': {name: punctuation.definition.metadata.markdown}
+      '7': {name: punctuation.definition.link.markdown}
+      '8': {name: markup.underline.link.markdown}
+      '9': {name: punctuation.definition.link.markdown}
+      '10': {name: string.other.link.description.title.markdown}
+      '11': {name: punctuation.definition.string.begin.markdown}
+      '12': {name: punctuation.definition.string.end.markdown}
+      '13': {name: string.other.link.description.title.markdown}
+      '14': {name: punctuation.definition.string.begin.markdown}
+      '15': {name: punctuation.definition.string.end.markdown}
+      '16': {name: punctuation.definition.metadata.markdown}
+
+  link-ref:
+    name: meta.link.reference.markdown
+    match: (\[)((?<square>[^\[\]\\]|\\.|\[\g<square>*+\])*+)(\])[ ]?(\[)([^\]]*+)(\])
+    captures:
+      '1': {name: punctuation.definition.string.begin.markdown}
+      '2': {name: string.other.link.title.markdown}
+      '4': {name: punctuation.definition.string.end.markdown}
+      '5': {name: punctuation.definition.constant.begin.markdown}
+      '6': {name: constant.other.reference.link.markdown}
+      '7': {name: punctuation.definition.constant.end.markdown}
+
+  link-ref-literal:
+    name: meta.link.reference.literal.markdown
+    match: (\[)((?<square>[^\[\]\\]|\\.|\[\g<square>*+\])*+)(\])[ ]?(\[)(\])
+    captures:
+      '1': {name: punctuation.definition.string.begin.markdown}
+      '2': {name: string.other.link.title.markdown}
+      '4': {name: punctuation.definition.string.end.markdown}
+      '5': {name: punctuation.definition.constant.begin.markdown}
+      '6': {name: punctuation.definition.constant.end.markdown}
+
+  list-paragraph:
+    patterns:
+    - name: meta.paragraph.list.markdown
+      begin: \G\s+(?=\S)
+      end: ^\s*$
+      patterns:
+      - include: '#inline'
+
+  raw:
+    name: markup.raw.inline.markdown
+    match: (`+)([^`]|(?!(?<!`)\1(?!`))`)*+(\1)
+    captures:
+      '1': {name: punctuation.definition.raw.markdown}
+      '3': {name: punctuation.definition.raw.markdown}
+
+  separator:
+    name: meta.separator.markdown
+    match: \G[ ]{,3}([-*_])([ ]{,2}\1){2,}[ \t]*$\n?
+foldingStartMarker: |-
+  (?x)
+  (<(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?>
+  |<!--(?!.*-->)
+  |\{\s*($|\?>\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
+  )
+foldingStopMarker: |-
+  (?x)
+  (</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)>
+  |^\s*-->
+  |(^|\s)\}
+  )
+keyEquivalent: ^~M
