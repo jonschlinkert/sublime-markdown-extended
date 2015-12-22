@@ -36,6 +36,9 @@
                     "include": "#italic"
                 }, 
                 {
+                    "include": "#strike"
+                }, 
+                {
                     "include": "#image-inline"
                 }, 
                 {
@@ -220,6 +223,9 @@
                     "include": "#bold"
                 }, 
                 {
+                    "include": "#strike"
+                }, 
+                {
                     "include": "#image-inline"
                 }, 
                 {
@@ -244,6 +250,67 @@
             "captures": {
                 "1": {
                     "name": "punctuation.definition.italic.markdown"
+                }
+            }
+        }, 
+        "strike": {
+            "name": "markup.strike.markdown", 
+            "end": "(?<=\\S)(\\1)((?!\\1)|(?=\\1\\1))", 
+            "begin": "(?x)\n(~~)(?=\\S)                         # Open\n(?=\n  (\n      <[^>]*+>              # HTML tags\n    | (?<raw>`+)([^`]|(?!(?<!`)\\k<raw>(?!`))`)*+\\k<raw>\n                                     # Raw\n    | \\\\[\\\\`*_{}\\[\\]()#.!+\\->]?+  # Escapes\n    | \\[\n    (\n            (?<square>         # Named group\n          [^\\[\\]\\\\]                  # Match most chars\n              | \\\\.                  # Escaped chars\n              | \\[ \\g<square>*+ \\]  # Nested brackets\n            )*+\n      \\]\n      (\n        (                            # Reference Link\n          [ ]?                       # Optional space\n          \\[[^\\]]*+\\]                # Ref name\n        )\n        | (                          # Inline Link\n          \\(                         # Opening paren\n            [ \\t]*+                  # Optional whtiespace\n            <?(.*?)>?          # URL\n            [ \\t]*+                  # Optional whtiespace\n            (                        # Optional Title\n              (?<title>['\"])\n              (.*?)\n              \\k<title>\n            )?\n          \\)\n        )\n      )\n    )\n    | \\1\\1                        # Must be bold closer\n    | (?!(?<=\\S)\\1).           # Everything besides\n                                  # style closer\n  )++\n  (?<=\\S)\\1                    # Close\n)", 
+            "patterns": [
+                {
+                    "end": "(?<=>)", 
+                    "patterns": [
+                        {
+                            "include": "text.html.handlebars"
+                        }
+                    ], 
+                    "applyEndPatternLast": 1, 
+                    "begin": "(?=<[^>]*?>)"
+                }, 
+                {
+                    "include": "#escape"
+                }, 
+                {
+                    "include": "#ampersand"
+                }, 
+                {
+                    "include": "#bracket"
+                }, 
+                {
+                    "include": "#raw"
+                }, 
+                {
+                    "include": "#bold"
+                }, 
+                {
+                    "include": "#italic"
+                }, 
+                {
+                    "include": "#image-inline"
+                }, 
+                {
+                    "include": "#link-inline"
+                }, 
+                {
+                    "include": "#link-inet"
+                }, 
+                {
+                    "include": "#link-email"
+                }, 
+                {
+                    "include": "#image-ref"
+                }, 
+                {
+                    "include": "#link-ref-literal"
+                }, 
+                {
+                    "include": "#link-ref"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.strike.markdown"
                 }
             }
         }, 
@@ -282,6 +349,9 @@
                 }, 
                 {
                     "include": "#italic"
+                }, 
+                {
+                    "include": "#strike"
                 }, 
                 {
                     "include": "#line-break"
