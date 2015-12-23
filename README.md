@@ -226,13 +226,17 @@ See [gray-matter](https://github.com/assemble/gray-matter)
 ![image](https://f.cloud.github.com/assets/383994/2179172/82a6dc1c-9694-11e3-89f1-772bedf02384.png)
 
 
-## Author
+## Authors
 
 **Jon Schlinkert**
 
 + [http://twitter.com/jonschlinkert](http://twitter.com/jonschlinkert)
 + [http://github.com/jonschlinkert](http://github.com/jonschlinkert)
 
+**Alexander Krivoshhekov**
+
++ [http://twitter.com/SuperPaintman](http://twitter.com/SuperPaintman)
++ [http://github.com/FlatDev](http://github.com/FlatDev)
 
 ## Copyright and license
 Copyright 2013-2015 Jon Schlinkert
