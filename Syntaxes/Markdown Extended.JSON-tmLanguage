@@ -388,20 +388,110 @@
             "match": "\\G[ ]{,3}([-*_])([ ]{,2}\\1){2,}[ \\t]*$\\n?"
         }, 
         "heading": {
-            "name": "markup.heading.markdown", 
-            "end": "\\s*(#*)$\\n?", 
             "patterns": [
+                // H1
                 {
-                    "include": "#inline"
+                    "name": "markup.heading.1.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{1})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.1.markdown", // Default: entity.name.section.markdown
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H2
+                {
+                    "name": "markup.heading.2.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{2})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.2.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H3
+                {
+                    "name": "markup.heading.3.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{3})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.3.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H4
+                {
+                    "name": "markup.heading.4.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{4})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.4.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H5
+                {
+                    "name": "markup.heading.5.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{5})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.5.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H6
+                {
+                    "name": "markup.heading.6.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{6})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.6.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
                 }
-            ], 
-            "begin": "\\G(#{1,6})(?!#)\\s*(?=\\S)", 
-            "contentName": "entity.name.section.markdown", 
-            "captures": {
-                "1": {
-                    "name": "punctuation.definition.heading.markdown"
-                }
-            }
+            ]
         }, 
         "image-ref": {
             "name": "meta.image.reference.markdown", 
