@@ -235,8 +235,8 @@ See [gray-matter](https://github.com/assemble/gray-matter)
 
 **Alexander Krivoshhekov**
 
-+ [http://twitter.com/SuperPaintman](http://twitter.com/SuperPaintman)
-+ [http://github.com/FlatDev](http://github.com/FlatDev)
++ [http://twitter.com/FlatDev](http://twitter.com/FlatDev)
++ [http://github.com/SuperPaintman](http://github.com/SuperPaintman)
 
 ## Copyright and license
 Copyright 2013-2015 Jon Schlinkert
