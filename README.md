@@ -114,10 +114,13 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `c++`
 * `diff`
 * `ejs`
+* `erlang`
 * `underscore`
+* `go`
 * `lodash`
 * `handlebars|hbs`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
 * `html|html5`
+* `ini`
 * `jade`
 * `java`
 * `javascript|js`
@@ -128,6 +131,7 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `ls|livescript|LiveScript`
 * `lua`
 * `md|markdown`
+* `nginx`
 * `objective-c`
 * `objective-c++`
 * `perl`

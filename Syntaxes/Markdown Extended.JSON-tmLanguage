@@ -755,6 +755,27 @@
         {
             "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
             "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
+            "begin": "(```|~~~|{%\\s*highlight)\\s*(erlang)\\s*((?:linenos\\s*)?%})?$", 
+            "patterns": [
+                {
+                    "include": "source.erlang"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }, 
+                "3": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }
+            }
+        }, 
+        {
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
             "begin": "(```|~~~|{%\\s*highlight)\\s*(diff)\\s*((?:linenos\\s*)?%})?$", 
             "patterns": [
                 {
@@ -804,6 +825,27 @@
                 }, 
                 {
                     "include": "text.html.handlebars"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }, 
+                "3": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }
+            }
+        }, 
+        {
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
+            "begin": "(```|~~~|{%\\s*highlight)\\s*(ini)\\s*((?:linenos\\s*)?%})?$", 
+            "patterns": [
+                {
+                    "include": "source.ini"
                 }
             ], 
             "captures": {
@@ -972,6 +1014,27 @@
             "patterns": [
                 {
                     "include": "text.html.markdown"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }, 
+                "3": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }
+            }
+        }, 
+        {
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
+            "begin": "(```|~~~|{%\\s*highlight)\\s*(nginx)\\s*((?:linenos\\s*)?%})?$", 
+            "patterns": [
+                {
+                    "include": "source.nginx"
                 }
             ], 
             "captures": {
