@@ -11,6 +11,11 @@ file_extensions:
 scope: text.html.markdown
 contexts:
   main:
+    - match: (?=(?<!\s)---(\s*coffee|\s*json)?\n$)
+      push: front-matter
+    - match: ""
+      push: body
+  front-matter:
     - match: (?<!\s)---\n$
       push:
         - meta_scope: markup.raw.yaml.front-matter
@@ -32,6 +37,10 @@ contexts:
         - match: ^---\s
           pop: true
         - include: scope:source.json
+    - match: ""
+      pop: true
+      push: body
+  body:
     - match: |-
         (?x)^
         (?= [ ]{,3}>.
@@ -1251,18 +1260,47 @@ contexts:
         - include: image-ref
         - include: link-ref-literal
         - include: link-ref
+
+  # it is needed to fix the $top_level_main issue
+  # https://github.com/sublimehq/Packages/issues/73#issuecomment-183759677
+  latex_braces:
+    - match: '\{'
+      push:
+        - match: '\}'
+          pop: true
+        - include: latex_braces
+        - include: scope:text.tex.latex
   latex:
+    - match: \\\$
     - match: (?=\$\$)
+      with_prototype:
+        - include: latex_braces
       push:
         - meta_scope: text.tex.latex
         - match: (?<=\$\$)
           pop: true
         - include: scope:text.tex.latex
-    - match: (?=(\$(?!\$)).*?\S\$)
+    - match: |-
+        (?x)
+        (?=
+          \$
+          (?:
+            \\\\
+            |\\\{
+            |\\\{
+            |(?<brace> # allow $ inside nested braces
+              \{
+              (?:[^{}]|\g<brace>)*
+              \}
+            )
+            |[^\$\{\}]
+          )*?
+          (?<=\S)\$[^a-zA-Z0-9]
+        )
       with_prototype:
-        - match: \s$
+        - include: latex_braces
       push:
         - meta_scope: text.tex.latex
-        - match: (?<=\S\$|\n)
-          pop: true
         - include: scope:text.tex.latex
+        - match: (?<=\S\$)(?=[^a-zA-Z0-9])
+          pop: true
