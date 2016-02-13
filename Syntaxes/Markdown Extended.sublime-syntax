@@ -1260,9 +1260,21 @@ contexts:
         - include: image-ref
         - include: link-ref-literal
         - include: link-ref
+
+  # it is needed to fix the $top_level_main issue
+  # https://github.com/sublimehq/Packages/issues/73#issuecomment-183759677
+  latex_braces:
+    - match: '\{'
+      push:
+        - match: '\}'
+          pop: true
+        - include: latex_braces
+        - include: scope:text.tex.latex
   latex:
     - match: \\\$
     - match: (?=\$\$)
+      with_prototype:
+        - include: latex_braces
       push:
         - meta_scope: text.tex.latex
         - match: (?<=\$\$)
@@ -1273,17 +1285,22 @@ contexts:
         (?=
           \$
           (?:
-            (?<brace> # allow $ inside nested braces
+            \\\\
+            |\\\{
+            |\\\{
+            |(?<brace> # allow $ inside nested braces
               \{
-              (?:[^\{\}]*|\g<brace>)
+              (?:[^{}]|\g<brace>)*
               \}
             )
             |[^\$\{\}]
           )*?
           (?<=\S)\$[^a-zA-Z0-9]
         )
+      with_prototype:
+        - include: latex_braces
       push:
         - meta_scope: text.tex.latex
+        - include: scope:text.tex.latex
         - match: (?<=\S\$)(?=[^a-zA-Z0-9])
           pop: true
-        - include: scope:text.tex.latex
