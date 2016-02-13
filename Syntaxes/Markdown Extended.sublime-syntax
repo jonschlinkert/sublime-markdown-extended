@@ -460,7 +460,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.python
-    - match: '(```|~~~)\s*\{?\s*(r)(?:[ \}].*$|\}?$)'
+    - match: '(```|~~~)\s*\{?\s*(r)(?:[ \},].*$|\}?$)'
       captures:
         1: punctuation.definition.fenced.markdown
         2: variable.language.fenced.markdown
