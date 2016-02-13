@@ -11,6 +11,11 @@ file_extensions:
 scope: text.html.markdown
 contexts:
   main:
+    - match: (?=(?<!\s)---(\s*coffee|\s*json)?\n$)
+      push: front-matter
+    - match: ""
+      push: body
+  front-matter:
     - match: (?<!\s)---\n$
       push:
         - meta_scope: markup.raw.yaml.front-matter
@@ -32,6 +37,10 @@ contexts:
         - match: ^---\s
           pop: true
         - include: scope:source.json
+    - match: ""
+      pop: true
+      push: body
+  body:
     - match: |-
         (?x)^
         (?= [ ]{,3}>.
