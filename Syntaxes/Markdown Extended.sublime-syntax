@@ -13,7 +13,7 @@ contexts:
   main:
     - match: (?<!\s)---\n$
       push:
-        - meta_scope: markup.raw.yaml.front-matter
+        - meta_scope: source.yaml markup.raw.yaml.front-matter
         - match: ^---\s
           pop: true
         - include: scope:source.yaml
@@ -698,6 +698,7 @@ contexts:
     - match: '^(?=\S)(?![=-]{3,}(?=$))'
       push:
         - meta_scope: meta.paragraph.markdown
+        - include: html_comment
         - match: '^(?:\s*$|(?=[ ]{,3}>.))|(?=[ \t]*\n)(?<=^===|^====|=====|^---|^----|-----)[ \t]*\n|(?=^#)'
           pop: true
         - include: inline
@@ -710,6 +711,16 @@ contexts:
           scope: markup.heading.2.markdown
           captures:
             1: punctuation.definition.heading.markdown
+  html_comment:
+    - match: <!--
+      captures:
+        0: punctuation.definition.comment.html
+      push:
+        - meta_scope: comment.block.html
+        - match: '--\s*>'
+          pop: true
+        - match: "--"
+          scope: invalid.illegal.bad-comments-or-CDATA.html
   ampersand:
     - match: "&(?!([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);)"
       comment: |
