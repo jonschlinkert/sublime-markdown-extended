@@ -1252,17 +1252,29 @@ contexts:
         - include: link-ref-literal
         - include: link-ref
   latex:
+    - match: \\\$
     - match: (?=\$\$)
       push:
         - meta_scope: text.tex.latex
         - match: (?<=\$\$)
           pop: true
         - include: scope:text.tex.latex
-    - match: (?=(\$(?!\$)).*?\S\$)
-      with_prototype:
-        - match: \s$
+    - match: |-
+        (?x)
+        (?=
+          \$
+          (?:
+            (?<brace> # allow $ inside nested braces
+              \{
+              (?:[^\{\}]*|\g<brace>)
+              \}
+            )
+            |[^\$\{\}]
+          )*?
+          (?<=\S)\$[^a-zA-Z0-9]
+        )
       push:
         - meta_scope: text.tex.latex
-        - match: (?<=\S\$|\n)
+        - match: (?<=\S\$)(?=[^a-zA-Z0-9])
           pop: true
         - include: scope:text.tex.latex
