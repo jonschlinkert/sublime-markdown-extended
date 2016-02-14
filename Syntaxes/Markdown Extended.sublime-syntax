@@ -1261,20 +1261,27 @@ contexts:
         - include: link-ref-literal
         - include: link-ref
 
-  # it is needed to fix the $top_level_main issue
-  # https://github.com/sublimehq/Packages/issues/73#issuecomment-183759677
-  latex_braces:
+  latex_elements:
     - match: '\{'
       push:
         - match: '\}'
           pop: true
-        - include: latex_braces
+        - include: latex_elements
         - include: scope:text.tex.latex
+    - match: '(\\begin)\{\s*(\w*)\*?\s*\}'
+      captures:
+        1: support.function.latex
+        2: variable.parameter.function.latex
+    - match: '(\\end)\{\s*(\w*)\*?\s*\}'
+      captures:
+        1: support.function.latex
+        2: variable.parameter.function.latex
+
   latex:
     - match: \\\$
     - match: (?=\$\$)
       with_prototype:
-        - include: latex_braces
+        - include: latex_elements
       push:
         - meta_scope: text.tex.latex
         - match: (?<=\$\$)
@@ -1298,7 +1305,7 @@ contexts:
           (?<=\S)\$[^a-zA-Z0-9]
         )
       with_prototype:
-        - include: latex_braces
+        - include: latex_elements
       push:
         - meta_scope: text.tex.latex
         - include: scope:text.tex.latex
