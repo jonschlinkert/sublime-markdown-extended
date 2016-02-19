@@ -915,6 +915,7 @@ contexts:
         1: punctuation.definition.heading.markdown
       push:
         - meta_scope: markup.heading.1.markdown
+        - meta_scope: markup.heading.markdown
         - meta_content_scope: markup.heading.1.markdown
         - match: \s*(#*)$\n?
           captures:
