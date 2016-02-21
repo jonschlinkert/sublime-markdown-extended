@@ -13,7 +13,7 @@
 		<key>symbolTransformation</key>
 		<string>
 		s/\s*#*\s*\z//g;			# strip trailing space and #'s
-		s/(?&lt;=#)#/ /g;			# change all but first # to m-space
+		s/(?&lt;=#)#/  /g;			# change all but first # to m-space
 		s/^#( *)\s+(.*)/$1$2/;		# strip first # and space before title
 	</string>
 	</dict>
