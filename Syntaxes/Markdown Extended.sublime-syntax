@@ -1268,6 +1268,9 @@ contexts:
           pop: true
         - include: latex_elements
         - include: scope:text.tex.latex
+    - match: '(\\(?:emph|text[a-zA-Z@]*|hbox|[mhf]box|framebox|makebox|parbox|raisebox))'
+      captures:
+        1: support.function.latex
     - match: '(\\begin)\{\s*(\w*)\*?\s*\}'
       captures:
         1: support.function.latex
