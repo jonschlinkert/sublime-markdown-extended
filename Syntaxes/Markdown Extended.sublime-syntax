@@ -502,6 +502,26 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ruby
+    - match: '(```|~~~|{%\s*highlight)\s*(rails|erb|html\+ruby)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - match: ''
+          push:
+            - meta_content_scope: text.html.ruby
+            - include: scope:text.html.ruby
+          with_prototype:
+            - match: '(?=(```|~~~|{%\s*endhighlight\s*%})\n)'
+              pop: true
     - match: '(```|~~~|{%\s*highlight)\s*(rust)\s*((?:linenos\s*)?%})?$'
       captures:
         1: punctuation.definition.fenced.markdown
