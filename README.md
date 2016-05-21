@@ -1,4 +1,4 @@
-# [sublime-markdown-extended](https://github.com/jonschlinkert/sublime-markdown-extended)
+# [sublime-markdown-extended](https://github.com/jonschlinkert/sublime-markdown-extended) [![package control total downloads](https://img.shields.io/packagecontrol/dt/Markdown%20Extended.svg?style=flat-square)](https://packagecontrol.io/packages/Markdown%20Extended/)
 
 > Extends Soda's Monokai and the default markdown styles with additional syntax highlighting for
 > [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html), GitHub Flavored Markdown
