@@ -710,7 +710,6 @@ contexts:
           pop: true
         - include: scope:text.html.basic
         - include: scope:text.html.handlebars
-        - include: latex
     - match: '^(?=<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\b)'
       comment: Same rule but for one line disables.
       push:
@@ -1030,7 +1029,6 @@ contexts:
     - include: image-ref
     - include: link-ref-literal
     - include: link-ref
-    - include: latex
   italic:
     - match: |-
         (?x)
@@ -1254,57 +1252,3 @@ contexts:
         - include: image-ref
         - include: link-ref-literal
         - include: link-ref
-
-  latex_elements:
-    - match: '\{'
-      push:
-        - match: '\}'
-          pop: true
-        - include: latex_elements
-        - include: scope:text.tex.latex
-    - match: '(\\(?:emph|text[a-zA-Z@]*|hbox|[mhf]box|framebox|makebox|parbox|raisebox))'
-      captures:
-        1: support.function.latex
-    - match: '(\\begin)\{\s*(\w*)\*?\s*\}'
-      captures:
-        1: support.function.latex
-        2: variable.parameter.function.latex
-    - match: '(\\end)\{\s*(\w*)\*?\s*\}'
-      captures:
-        1: support.function.latex
-        2: variable.parameter.function.latex
-
-  latex:
-    - match: \\\$
-    - match: (?=\$\$)
-      with_prototype:
-        - include: latex_elements
-      push:
-        - meta_scope: text.tex.latex
-        - match: (?<=\$\$)
-          pop: true
-        - include: scope:text.tex.latex
-    - match: |-
-        (?x)
-        (?=
-          \$
-          (?:
-            \\\\
-            |\\\{
-            |\\\{
-            |(?<brace> # allow $ inside nested braces
-              \{
-              (?:[^{}]|\g<brace>)*
-              \}
-            )
-            |[^\$\{\}]
-          )*?
-          (?<=\S)\$[^a-zA-Z0-9]
-        )
-      with_prototype:
-        - include: latex_elements
-      push:
-        - meta_scope: text.tex.latex
-        - include: scope:text.tex.latex
-        - match: (?<=\S\$)(?=[^a-zA-Z0-9])
-          pop: true
