@@ -1173,6 +1173,10 @@ contexts:
         - meta_scope: meta.paragraph.list.markdown
         - match: ^\s*$
           pop: true
+        - match: '^\s{0,4}([*+-]|([0-9]+)\.)(?=\s)'
+          captures: 
+            1: punctuation.definition.list_item.markdown
+            2: punctuation.definition.list_item.number.markdown
         - include: inline
   raw:
     - match: '(`+)([^`]|(?!(?<!`)\1(?!`))`)*+(\1)'
