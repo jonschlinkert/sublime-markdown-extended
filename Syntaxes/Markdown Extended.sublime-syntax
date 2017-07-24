@@ -783,7 +783,7 @@ contexts:
           scope: markup.heading.2.markdown
           captures:
             1: punctuation.definition.heading.markdown
-    - include: latex-display
+
   html_comment:
     - match: <!--
       captures:
@@ -1196,11 +1196,12 @@ contexts:
         - match: ^\s*$
           pop: true
         - match: '^\s{0,4}([*+-]|([0-9]+)\.)(?=\s)'
-          captures: 
+          captures:
             1: punctuation.definition.list_item.markdown
             2: punctuation.definition.list_item.number.markdown
         - include: inline
   raw:
+    - include: latex-display
     - match: '(`+)([^`]|(?!(?<!`)\1(?!`))`)*+(\1)'
       scope: markup.raw.inline.markdown
       captures:
@@ -1280,17 +1281,34 @@ contexts:
         - include: link-ref
 
   latex-inline:
-    - match: '(?=\$)'
+    - match: \\\$
+    - match: |-
+        (?x)
+        (\$)(?=\S)
+        (?=
+          (?:
+            \\\\
+            |\\\$
+            |[^\$]
+          )*?
+          \S\$(?:[^a-zA-Z0-9]|$)
+        )
+      scope: string.other.math.latex punctuation.definition.string.begin.latex
       push:
-        - meta_scope: text.tex.latex
-        - match: '(?<=\$)'
+        - meta_scope: text.tex.latex meta.environment.math.latex
+        - include: scope:text.tex.latex#macros
+        - include: scope:text.tex.latex#math-content
+        - match: \$
+          scope: string.other.math.latex punctuation.definition.string.end.latex
           pop: true
-        - include: scope:text.tex.latex
 
   latex-display:
-    - match: '(?=\$\$)'
+    - match: \$\$
+      scope: string.other.math.latex punctuation.definition.string.begin.latex
       push:
-        - meta_scope: text.tex.latex
-        - match: '(?<=\$\$)'
+        - meta_scope: text.tex.latex meta.environment.math.latex
+        - include: scope:text.tex.latex#macros
+        - include: scope:text.tex.latex#math-content
+        - match: \$\$
+          scope: string.other.math.latex punctuation.definition.string.end.latex
           pop: true
-        - include: scope:text.tex.latex
