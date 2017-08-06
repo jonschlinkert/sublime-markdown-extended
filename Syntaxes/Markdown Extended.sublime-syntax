@@ -17,6 +17,8 @@ contexts:
       push: body
   front-matter:
     - match: (?<!\s)---\n$
+      with_prototype:
+        - include: scope:source.yaml#prototype
       push:
         - meta_scope: markup.raw.yaml.front-matter
         - meta_content_scope: source.yaml
