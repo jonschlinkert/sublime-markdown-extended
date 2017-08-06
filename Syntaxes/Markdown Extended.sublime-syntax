@@ -14,34 +14,34 @@ contexts:
     - match: (?=(?<!\s)---(\s*coffee|\s*json)?\n$)
       push: front-matter
     - match: ""
-      push: body
+      set: body
   front-matter:
-    - match: (?<!\s)---\n$
+    - match: ^\s*---\s*$
       with_prototype:
         - include: scope:source.yaml#prototype
       push:
         - meta_scope: markup.raw.yaml.front-matter
         - meta_content_scope: source.yaml
-        - match: ^---\s
+        - match: ^\s*---\s*
           pop: true
         - include: scope:source.yaml
-    - match: (?<!\s)---\s*coffee\n$
+    - match: ^\s*---\s*coffee\s*$
       push:
         - meta_scope: markup.raw.coffee.front-matter
         - meta_content_scope: source.coffee
-        - match: ^---\s
+        - match: ^\s*---\s*
           pop: true
         - include: scope:source.coffee
-    - match: (?<!\s)---\s*json\n$
+    - match: ^\s*---\s*json\s*$
       push:
         - meta_scope: markup.raw.json.front-matter
         - meta_content_scope: source.json
-        - match: ^---\s
+        - match: ^\s*---\s*
           pop: true
         - include: scope:source.json
     - match: ""
       pop: true
-      push: body
+      set: body
   body:
     - match: |-
         (?x)^
