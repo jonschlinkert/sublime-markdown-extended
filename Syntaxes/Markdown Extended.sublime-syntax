@@ -218,6 +218,21 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.go
+    - match: '(```|~~~|{%\s*highlight)\s*(graphql)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: source.graphql
+        - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:source.graphql
     - match: '(```|~~~|{%\s*highlight)\s*(hbs|handlebars|html|html5)\s*((?:linenos\s*)?%})?$'
       captures:
         1: punctuation.definition.fenced.markdown

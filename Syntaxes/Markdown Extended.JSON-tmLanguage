@@ -908,6 +908,27 @@
         {
             "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
             "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
+            "begin": "(```|~~~|{%\\s*highlight)\\s*(graphql)\\s*((?:linenos\\s*)?%})?$", 
+            "patterns": [
+                {
+                    "include": "source.graphql"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }, 
+                "3": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }
+            }
+        }, 
+        {
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
             "begin": "(```|~~~|{%\\s*highlight)\\s*(hbs|handlebars|html|html5)\\s*((?:linenos\\s*)?%})?$", 
             "patterns": [
                 {
