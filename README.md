@@ -117,6 +117,7 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `erlang`
 * `underscore`
 * `go`
+* `graphql`
 * `lodash`
 * `handlebars|hbs`: requires the Sublime Text [Handlebars](https://github.com/daaain/Handlebars) package
 * `html|html5`
