@@ -1,0 +1,15 @@
+- match: '(```|~~~|{%\s*highlight)\s*({{lang}})\s*((?:linenos\s*)?%})?$'
+  captures:
+    1: punctuation.definition.fenced.markdown
+    2: variable.language.fenced.markdown
+    3: punctuation.definition.fenced.markdown
+  push:
+    - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+    - meta_content_scope: {{scope}}
+    - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      pop: true
+    - include: scope:{{scope}}

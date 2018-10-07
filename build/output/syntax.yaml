@@ -15,67 +15,59 @@ contexts:
 
   # begin front-matter
   front-matter:
-    - match: ^(---)(ya?ml)? *$
+    - match: ^---(ya?ml)? *$
       captures:
-        1: punctuation.definition.fenced.markdown
-        2: variable.language.fenced.markdown
+        1: punctuation.definition.fenced.yaml
+        2: variable.language.fenced.yaml
       with_prototype:
         - include: scope:source.yaml#prototype
       push:
-        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_scope: markup.raw.yaml.front-matter
         - meta_content_scope: source.yaml
-        - match: ^(---|\.{3}) *$
-          captures:
-            1: punctuation.definition.fenced.markdown
+        - match: ^(?:-|\.){3} *$
           pop: true
         - include: scope:source.yaml
 
-    - match: ^(---)(coffee) *$
+    - match: ^---(js|javascript)? *$
       captures:
-        1: punctuation.definition.fenced.markdown
-        2: variable.language.fenced.markdown
+        1: punctuation.definition.fenced.js
+        2: variable.language.fenced.js
+      with_prototype:
+        - include: scope:source.js#prototype
+      push:
+        - meta_scope: markup.raw.js.front-matter
+        - meta_content_scope: source.js
+        - match: ^(?:-|\.){3} *$
+          pop: true
+        - include: scope:source.js
+
+    - match: ^---coffee *$
+      captures:
+        1: punctuation.definition.fenced.coffee
+        2: variable.language.fenced.coffee
       with_prototype:
         - include: scope:source.coffee#prototype
       push:
-        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_scope: markup.raw.coffee.front-matter
         - meta_content_scope: source.coffee
-        - match: ^(---|\.{3}) *$
-          captures:
-            1: punctuation.definition.fenced.markdown
+        - match: ^(?:-|\.){3} *$
           pop: true
         - include: scope:source.coffee
 
-    - match: ^(---)(json) *$
+    - match: ^---json *$
       captures:
-        1: punctuation.definition.fenced.markdown
-        2: variable.language.fenced.markdown
+        1: punctuation.definition.fenced.json
+        2: variable.language.fenced.json
       with_prototype:
         - include: scope:source.json#prototype
       push:
-        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_scope: markup.raw.json.front-matter
         - meta_content_scope: source.json
-        - match: ^(---|\.{3}) *$
-          captures:
-            1: punctuation.definition.fenced.markdown
+        - match: ^(?:-|\.){3} *$
           pop: true
         - include: scope:source.json
 
-    - match: ^(---)(\w*) *$
-      captures:
-        1: punctuation.definition.fenced.markdown
-        2: variable.language.fenced.markdown
-      with_prototype:
-        - include: scope:text.plain#prototype
-      push:
-        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
-        - meta_content_scope: text.plain
-        - match: ^(---|\.{3}) *$
-          captures:
-            1: punctuation.definition.fenced.markdown
-          pop: true
-        - include: scope:text.plain
-
-    - match: ""
+    - match: $^
       pop: true
       set: body
 
@@ -104,6 +96,7 @@ contexts:
         - include: heading
         - include: separator
 
+    
     # fenced markdown: applescript
     - match: '(```|~~~|{%\s*highlight)\s*(applescript)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -120,7 +113,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.applescript
-
+    
     # fenced markdown: asp
     - match: '(```|~~~|{%\s*highlight)\s*(asp)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -137,7 +130,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.asp
-
+    
     # fenced markdown: bash
     - match: '(```|~~~|{%\s*highlight)\s*(bash|sh|shell)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -154,7 +147,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.shell
-
+    
     # fenced markdown: bibtex
     - match: '(```|~~~|{%\s*highlight)\s*(bibtex)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -171,7 +164,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.bibtex
-
+    
     # fenced markdown: c
     - match: '(```|~~~|{%\s*highlight)\s*(c)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -188,7 +181,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.c
-
+    
     # fenced markdown: clojure
     - match: '(```|~~~|{%\s*highlight)\s*(clojure)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -205,7 +198,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.clojure
-
+    
     # fenced markdown: cmake
     - match: '(```|~~~|{%\s*highlight)\s*(cmake)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -222,7 +215,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.cmake
-
+    
     # fenced markdown: coffee
     - match: '(```|~~~|{%\s*highlight)\s*(coffee|coffeescript)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -239,7 +232,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.coffee
-
+    
     # fenced markdown: cpp
     - match: '(```|~~~|{%\s*highlight)\s*(cpp)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -256,7 +249,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.c++
-
+    
     # fenced markdown: csharp
     - match: '(```|~~~|{%\s*highlight)\s*(csharp)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -273,7 +266,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.cs
-
+    
     # fenced markdown: css
     - match: '(```|~~~|{%\s*highlight)\s*(css)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -290,7 +283,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.css
-
+    
     # fenced markdown: d
     - match: '(```|~~~|{%\s*highlight)\s*(d)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -307,7 +300,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.d
-
+    
     # fenced markdown: ddl
     - match: '(```|~~~|{%\s*highlight)\s*(ddl|dml|mysql|sql)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -324,7 +317,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.sql
-
+    
     # fenced markdown: diff
     - match: '(```|~~~|{%\s*highlight)\s*(diff)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -341,7 +334,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.diff
-
+    
     # fenced markdown: dockerfile
     - match: '(```|~~~|{%\s*highlight)\s*(dockerfile)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -358,7 +351,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.dockerfile
-
+    
     # fenced markdown: dosbatch
     - match: '(```|~~~|{%\s*highlight)\s*(dosbatch)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -375,7 +368,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.dosbatch
-
+    
     # fenced markdown: dot
     - match: '(```|~~~|{%\s*highlight)\s*(dot)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -392,7 +385,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.dot
-
+    
     # fenced markdown: editorconfig
     - match: '(```|~~~|{%\s*highlight)\s*(editorconfig)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -409,7 +402,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ini.editorconfig
-
+    
     # fenced markdown: ejs
     - match: '(```|~~~|{%\s*highlight)\s*(ejs|lodash|underscore)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -426,7 +419,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ejs
-
+    
     # fenced markdown: erb
     - match: '(```|~~~|{%\s*highlight)\s*(erb|html\+ruby|rails)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -443,7 +436,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.html.ruby
-
+    
     # fenced markdown: erlang
     - match: '(```|~~~|{%\s*highlight)\s*(erlang)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -460,7 +453,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.erlang
-
+    
     # fenced markdown: git
     - match: '(```|~~~|{%\s*highlight)\s*(git)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -477,7 +470,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.git
-
+    
     # fenced markdown: go
     - match: '(```|~~~|{%\s*highlight)\s*(go|golang)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -494,7 +487,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.go
-
+    
     # fenced markdown: gradle
     - match: '(```|~~~|{%\s*highlight)\s*(gradle)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -511,7 +504,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.gradle
-
+    
     # fenced markdown: graphql
     - match: '(```|~~~|{%\s*highlight)\s*(graphql)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -528,7 +521,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.graphql
-
+    
     # fenced markdown: groovy
     - match: '(```|~~~|{%\s*highlight)\s*(groovy)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -545,7 +538,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.groovy
-
+    
     # fenced markdown: gruntfile.coffee
     - match: '(```|~~~|{%\s*highlight)\s*(gruntfile\.coffee)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -562,7 +555,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.gruntfile.coffee
-
+    
     # fenced markdown: gruntfile.js
     - match: '(```|~~~|{%\s*highlight)\s*(gruntfile\.js)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -579,7 +572,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.gruntfile.js
-
+    
     # fenced markdown: gulpfile.coffee
     - match: '(```|~~~|{%\s*highlight)\s*(gulpfile\.coffee)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -596,7 +589,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.gulpfile.coffee
-
+    
     # fenced markdown: gulpfile.js
     - match: '(```|~~~|{%\s*highlight)\s*(gulpfile\.js)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -613,7 +606,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.gulpfile.js
-
+    
     # fenced markdown: haml
     - match: '(```|~~~|{%\s*highlight)\s*(haml)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -630,7 +623,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.haml
-
+    
     # fenced markdown: handlebars
     - match: '(```|~~~|{%\s*highlight)\s*(handlebars|hbs|html|html5)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -648,7 +641,7 @@ contexts:
           pop: true
         - include: scope:text.html.basic
         - include: scope:text.html.handlebars
-
+    
     # fenced markdown: haskell
     - match: '(```|~~~|{%\s*highlight)\s*(haskell)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -665,7 +658,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.haskell
-
+    
     # fenced markdown: ini
     - match: '(```|~~~|{%\s*highlight)\s*(ini)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -682,7 +675,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ini
-
+    
     # fenced markdown: jade
     - match: '(```|~~~|{%\s*highlight)\s*(jade)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -699,7 +692,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.jade
-
+    
     # fenced markdown: java
     - match: '(```|~~~|{%\s*highlight)\s*(java)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -716,7 +709,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.java
-
+    
     # fenced markdown: javadoc
     - match: '(```|~~~|{%\s*highlight)\s*(javadoc)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -733,7 +726,24 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.html.javadoc
-
+    
+    # fenced markdown: javascript
+    - match: '(```|~~~|{%\s*highlight)\s*(javascript|js)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: source.js
+        - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:source.js
+    
     # fenced markdown: jl
     - match: '(```|~~~|{%\s*highlight)\s*(jl|julia)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -750,7 +760,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.julia
-
+    
     # fenced markdown: json
     - match: '(```|~~~|{%\s*highlight)\s*(json)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -767,7 +777,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.json
-
+    
     # fenced markdown: jsx
     - match: '(```|~~~|{%\s*highlight)\s*(jsx)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -784,7 +794,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.jsx
-
+    
     # fenced markdown: latex
     - match: '(```|~~~|{%\s*highlight)\s*(latex)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -801,7 +811,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.tex.latex
-
+    
     # fenced markdown: less
     - match: '(```|~~~|{%\s*highlight)\s*(less)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -818,7 +828,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.less
-
+    
     # fenced markdown: liquid
     - match: '(```|~~~|{%\s*highlight)\s*(liquid|swig)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -835,7 +845,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.html.swig
-
+    
     # fenced markdown: LiveScript
     - match: '(```|~~~|{%\s*highlight)\s*(LiveScript|livescript|ls)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -852,7 +862,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.livescript
-
+    
     # fenced markdown: lua
     - match: '(```|~~~|{%\s*highlight)\s*(lua)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -869,7 +879,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.lua
-
+    
     # fenced markdown: makefile
     - match: '(```|~~~|{%\s*highlight)\s*(makefile)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -886,7 +896,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.makefile
-
+    
     # fenced markdown: markdown
     - match: '(```|~~~|{%\s*highlight)\s*(markdown|md)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -903,7 +913,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.html.multimarkdown
-
+    
     # fenced markdown: math
     - match: '(```|~~~|{%\s*highlight)\s*(math)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -920,7 +930,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.tex.math
-
+    
     # fenced markdown: matlab
     - match: '(```|~~~|{%\s*highlight)\s*(matlab)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -937,7 +947,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.matlab
-
+    
     # fenced markdown: mustache
     - match: '(```|~~~|{%\s*highlight)\s*(mustache)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -954,7 +964,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.html.mustache
-
+    
     # fenced markdown: nginx
     - match: '(```|~~~|{%\s*highlight)\s*(nginx)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -971,7 +981,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.nginx
-
+    
     # fenced markdown: objc
     - match: '(```|~~~|{%\s*highlight)\s*(objc|objective-c)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -988,7 +998,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.objc
-
+    
     # fenced markdown: objc++
     - match: '(```|~~~|{%\s*highlight)\s*(objc\+\+|objective-c\+\+)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1005,7 +1015,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.objc++
-
+    
     # fenced markdown: ocaml
     - match: '(```|~~~|{%\s*highlight)\s*(ocaml)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1022,7 +1032,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ocaml
-
+    
     # fenced markdown: ocamllex
     - match: '(```|~~~|{%\s*highlight)\s*(ocamllex)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1039,7 +1049,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ocamllex
-
+    
     # fenced markdown: ocamlyacc
     - match: '(```|~~~|{%\s*highlight)\s*(ocamlyacc)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1056,7 +1066,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ocamlyacc
-
+    
     # fenced markdown: pascal
     - match: '(```|~~~|{%\s*highlight)\s*(pascal)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1073,7 +1083,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.pascal
-
+    
     # fenced markdown: perl
     - match: '(```|~~~|{%\s*highlight)\s*(perl)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1090,7 +1100,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.perl
-
+    
     # fenced markdown: pgsql
     - match: '(```|~~~|{%\s*highlight)\s*(pgsql|postgres|postgresql)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1107,7 +1117,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.pgsql
-
+    
     # fenced markdown: php
     - match: '(```|~~~|{%\s*highlight)\s*(php)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1124,7 +1134,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.php
-
+    
     # fenced markdown: plain
     - match: '(```|~~~|{%\s*highlight)\s*(plain)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1141,7 +1151,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.plain
-
+    
     # fenced markdown: procfile
     - match: '(```|~~~|{%\s*highlight)\s*(procfile)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1158,7 +1168,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.procfile
-
+    
     # fenced markdown: puppet
     - match: '(```|~~~|{%\s*highlight)\s*(puppet)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1175,7 +1185,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.puppet
-
+    
     # fenced markdown: python
     - match: '(```|~~~|{%\s*highlight)\s*(python)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1192,7 +1202,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.python
-
+    
     # fenced markdown: regexp
     - match: '(```|~~~|{%\s*highlight)\s*(regexp)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1209,7 +1219,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.regexp
-
+    
     # fenced markdown: regexp.pyjade
     - match: '(```|~~~|{%\s*highlight)\s*(regexp\.pyjade)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1226,7 +1236,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.pyjade
-
+    
     # fenced markdown: regexp.python
     - match: '(```|~~~|{%\s*highlight)\s*(regexp\.python)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1243,7 +1253,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.regexp.python
-
+    
     # fenced markdown: ruby
     - match: '(```|~~~|{%\s*highlight)\s*(ruby)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1260,7 +1270,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ruby
-
+    
     # fenced markdown: rust
     - match: '(```|~~~|{%\s*highlight)\s*(rust)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1277,7 +1287,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.rust
-
+    
     # fenced markdown: sass
     - match: '(```|~~~|{%\s*highlight)\s*(sass)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1294,7 +1304,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.sass
-
+    
     # fenced markdown: scala
     - match: '(```|~~~|{%\s*highlight)\s*(scala)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1311,7 +1321,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.scala
-
+    
     # fenced markdown: scss
     - match: '(```|~~~|{%\s*highlight)\s*(scss)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1328,7 +1338,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.scss
-
+    
     # fenced markdown: styl
     - match: '(```|~~~|{%\s*highlight)\s*(styl)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1345,7 +1355,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.stylus
-
+    
     # fenced markdown: swift
     - match: '(```|~~~|{%\s*highlight)\s*(swift)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1362,7 +1372,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.swift
-
+    
     # fenced markdown: tex
     - match: '(```|~~~|{%\s*highlight)\s*(tex)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1379,7 +1389,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.tex
-
+    
     # fenced markdown: textile
     - match: '(```|~~~|{%\s*highlight)\s*(textile)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1396,7 +1406,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.html.textile
-
+    
     # fenced markdown: todo
     - match: '(```|~~~|{%\s*highlight)\s*(todo)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1413,7 +1423,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.todo
-
+    
     # fenced markdown: twig
     - match: '(```|~~~|{%\s*highlight)\s*(twig)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1430,7 +1440,7 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.html.twig
-
+    
     # fenced markdown: xml
     - match: '(```|~~~|{%\s*highlight)\s*(xml)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1447,7 +1457,24 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:text.xml
-
+    
+    # fenced markdown: xml
+    - match: '(```|~~~|{%\s*highlight)\s*(xml)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: text.xml
+        - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:text.xml
+    
     # fenced markdown: yaml
     - match: '(```|~~~|{%\s*highlight)\s*(yaml)\s*((?:linenos\s*)?%})?$'
       captures:
@@ -1465,8 +1492,8 @@ contexts:
           pop: true
         - include: scope:source.yaml
 
-    # fenced markdown: javascript
-    - match: '(```|~~~|{%\s*highlight)\s*(javascript|js)\s*((?:linenos\s*)?%})?$'
+    # fenced markdown: generic
+    - match: '(```|~~~|{%\s*highlight)\s*(\w*)\s*((?:linenos\s*)?%})?$'
       captures:
         1: punctuation.definition.fenced.markdown
         2: variable.language.fenced.markdown
@@ -1479,13 +1506,6 @@ contexts:
             2: variable.language.fenced.markdown
             3: punctuation.definition.fenced.markdown
           pop: true
-        - match: ''
-          push:
-            - meta_content_scope: source.js
-            - include: scope:source.js
-          with_prototype:
-            - match: '(?=(```|~~~|{%\s*endhighlight\s*%})\n)'
-              pop: true
 
     # fenced markdown: r
     - match: '(```|~~~)\s*\{?\s*(r)(?:[ \},].*$|\}?$)'
@@ -1525,21 +1545,6 @@ contexts:
           with_prototype:
             - match: '(?=(```|~~~|{%\s*endhighlight\s*%})\n)'
               pop: true
-
-    # fenced markdown: generic
-    - match: '(```|~~~|{%\s*highlight)\s*(\w*)\s*((?:linenos\s*)?%})?$'
-      captures:
-        1: punctuation.definition.fenced.markdown
-        2: variable.language.fenced.markdown
-        3: punctuation.definition.fenced.markdown
-      push:
-        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
-        - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
-          captures:
-            1: punctuation.definition.fenced.markdown
-            2: variable.language.fenced.markdown
-            3: punctuation.definition.fenced.markdown
-          pop: true
 
     # lists
     - match: '^[ ]{0,3}([*+-])(?=\s)'
@@ -1979,11 +1984,12 @@ contexts:
   link-inline:
     - match: |-
         (?x:
-         (\[)((?<square>[^\[\]\\]|\\.|\[\g<square>+\])+?)(\])
+         (\[)((?<square>[^\[\]\\]|\\.|\[\g<square>*+\])*+)(\])
                                # Match the link text.
+         ([ ])?                # Space not allowed
          (\()                  # Opening paren for url
            (<?)(.*?)(>?)       # The url
-           [^\S\n]*            # Optional whitespace
+           [^\S\n]*              # Optional whitespace
            (?:
                ((\().+?(\)))   # Match title in parens…
              | ((").+?("))     # or in quotes.
@@ -1996,19 +2002,20 @@ contexts:
         1: punctuation.definition.string.begin.markdown
         2: string.other.link.title.markdown
         4: punctuation.definition.string.end.markdown
-        5: punctuation.definition.metadata.markdown
-        6: punctuation.definition.link.markdown
-        7: markup.underline.link.markdown
-        8: punctuation.definition.link.markdown
-        9: string.other.link.description.title.markdown
-        10: punctuation.definition.string.begin.markdown
-        11: punctuation.definition.string.end.markdown
-        12: string.other.link.description.title.markdown
-        13: punctuation.definition.string.begin.markdown
-        14: punctuation.definition.string.end.markdown
-        15: punctuation.definition.metadata.markdown
+        5: invalid.illegal.whitespace.markdown
+        6: punctuation.definition.metadata.markdown
+        7: punctuation.definition.link.markdown
+        8: markup.underline.link.markdown
+        9: punctuation.definition.link.markdown
+        10: string.other.link.description.title.markdown
+        11: punctuation.definition.string.begin.markdown
+        12: punctuation.definition.string.end.markdown
+        13: string.other.link.description.title.markdown
+        14: punctuation.definition.string.begin.markdown
+        15: punctuation.definition.string.end.markdown
+        16: punctuation.definition.metadata.markdown
   link-reference:
-    - match: '(\[)((?<square>[^\[\]\\]|\\.|\[\g<square>*+\])*)(\])(?:(\[)([^\]]*)(\]))?'
+    - match: '(\[)((?<square>[^\[\]\\]|\\.|\[\g<square>*+\])*)(\]) ?(\[)([^\]]*)(\])'
       scope: meta.link.reference.markdown
       captures:
         1: punctuation.definition.string.begin.markdown
@@ -2018,7 +2025,7 @@ contexts:
         6: constant.other.reference.link.markdown
         7: punctuation.definition.constant.end.markdown
   link-reference-literal:
-    - match: '(\[)((?<square>[^\[\]]\\]|\\.|\[\g<square>*+\])*)(\])(?:(\[)(\]))?'
+    - match: '(\[)((?<square>[^\[\]\\]|\\.|\[\g<square>*+\])*)(\]) ?(\[)(\])'
       scope: meta.link.reference.literal.markdown
       captures:
         1: punctuation.definition.string.begin.markdown
